@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://kaobeimao.github.io</id>
     <title>kaobeimao</title>
-    <updated>2019-09-26T09:46:22.203Z</updated>
+    <updated>2019-09-28T10:49:09.201Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://kaobeimao.github.io"/>
     <link rel="self" href="https://kaobeimao.github.io/atom.xml"/>
@@ -11,130 +11,45 @@
     <icon>https://kaobeimao.github.io/favicon.ico</icon>
     <rights>All rights reserved 2019, kaobeimao</rights>
     <entry>
-        <title type="html"><![CDATA[test2]]></title>
-        <id>https://kaobeimao.github.io/post/test2</id>
-        <link href="https://kaobeimao.github.io/post/test2">
+        <title type="html"><![CDATA[两数之和]]></title>
+        <id>https://kaobeimao.github.io/post/liang-shu-zhi-he</id>
+        <link href="https://kaobeimao.github.io/post/liang-shu-zhi-he">
         </link>
-        <updated>2019-09-26T07:06:50.000Z</updated>
-        <content type="html"><![CDATA[<h1 id="h1">h1</h1>
-<h2 id="h2">h2</h2>
-<h3 id="h3">h3</h3>
-<h4 id="h4">h4</h4>
-<h5 id="h5">h5</h5>
-<h6 id="h6">h6</h6>
-<blockquote>
-<p>这段文字将被高亮显示...</p>
-</blockquote>
-<p><a href="http://www.baidu.com">点击跳转至百度</a><br>
-<img src="https://cdn.pixabay.com/photo/2019/09/13/14/31/elephant-4474027_1280.jpg" alt="图片"></p>
-<ul>
-<li>黄瓜</li>
-<li>玉米</li>
-<li>茄子</li>
-</ul>
-<ol>
-<li>黄瓜</li>
-<li>玉米</li>
-<li>茄子</li>
-</ol>
-<hr>
-<p><em>这里是斜体</em><br>
-<strong>这里是加粗</strong></p>
-<pre><code class="language-js">app.use(async (ctx, next) =&gt; {
-  const start = new Date()
-  await next()
-  const ms = new Date() - start
-  console.log(`${ctx.method} ${ctx.url} - ${ms}ms`)
-})
+        <updated>2019-09-28T10:14:51.000Z</updated>
+        <content type="html"><![CDATA[<p>给定一个整数数组 nums 和一个目标值 target，请你在该数组中找出和为目标值的那 两个 整数，并返回他们的数组下标。<br>
+你可以假设每种输入只会对应一个答案。但是，你不能重复利用这个数组中同样的元素。<br>
+<strong>示例</strong></p>
+<pre><code class="language-js">给定 nums = [2, 7, 11, 15], target = 9
+因为 nums[0] + nums[1] = 2 + 7 = 9
+所以返回 [0, 1]
 </code></pre>
-<pre><code class="language-html">&lt;div&gt;hahah&lt;/div&gt;
-</code></pre>
-<pre><code class="language-css">body {
-    margin: 0;
-    padding: 0;
-    font-family: Consolas, &quot;PingFang SC&quot;, 'PingFangSC-Semibold', &quot;Helvetica Neue&quot;, Helvetica, &quot;Nimbus Sans L&quot;, Arial, &quot;Liberation Sans&quot;, &quot;Hiragino Sans GB&quot;, &quot;Source Han Sans CN&quot;, &quot;Source Han Sans SC&quot;, &quot;Microsoft YaHei&quot;, SimHei, sans-serif;
-    font-size: 14px;
-    -webkit-font-smoothing: antialiased;
-    overflow: hidden;
-}
-
-#app {
-    height: 100%;
-}
-
-.el-submenu [class^=fa] {
-    vertical-align: baseline;
-    margin-right: 10px;
-}
-
-.el-menu-item [class^=fa] {
-    vertical-align: baseline;
-    margin-right: 10px;
-}
+<p><strong>实现</strong></p>
+<pre><code class="language-js">/**
+ * @param {number[]} nums
+ * @param {number} target
+ * @return {number[]}
+ */
+var twoSum = function(nums, target) {
+    const obj = {}
+    for(let i = nums.length ; i -- ;){
+        const res = target - nums[i]
+        if(res in obj) {
+            return [i , obj[res]]        
+        }
+        obj[nums[i]] = i
+    }
+};
 </code></pre>
 ]]></content>
     </entry>
     <entry>
-        <title type="html"><![CDATA[test]]></title>
+        <title type="html"><![CDATA[浮点数的精度问题]]></title>
         <id>https://kaobeimao.github.io/post/test</id>
         <link href="https://kaobeimao.github.io/post/test">
         </link>
-        <updated>2019-09-26T06:43:57.000Z</updated>
-        <content type="html"><![CDATA[<h1 id="h1">h1</h1>
-<h2 id="h2">h2</h2>
-<h3 id="h3">h3</h3>
-<h4 id="h4">h4</h4>
-<h5 id="h5">h5</h5>
-<h6 id="h6">h6</h6>
-<blockquote>
-<p>这段文字将被高亮显示...</p>
-</blockquote>
-<p><a href="http://www.baidu.com">点击跳转至百度</a><br>
-<img src="https://cdn.pixabay.com/photo/2019/09/13/14/31/elephant-4474027_1280.jpg" alt="图片"></p>
-<ul>
-<li>黄瓜</li>
-<li>玉米</li>
-<li>茄子</li>
-</ul>
-<ol>
-<li>黄瓜</li>
-<li>玉米</li>
-<li>茄子</li>
-</ol>
-<hr>
-<p><em>这里是斜体</em><br>
-<strong>这里是加粗</strong></p>
-<pre><code class="language-js">app.use(async (ctx, next) =&gt; {
-  const start = new Date()
-  await next()
-  const ms = new Date() - start
-  console.log(`${ctx.method} ${ctx.url} - ${ms}ms`)
-})
-</code></pre>
-<pre><code class="language-html">&lt;div&gt;hahah&lt;/div&gt;
-</code></pre>
-<pre><code class="language-css">body {
-    margin: 0;
-    padding: 0;
-    font-family: Consolas, &quot;PingFang SC&quot;, 'PingFangSC-Semibold', &quot;Helvetica Neue&quot;, Helvetica, &quot;Nimbus Sans L&quot;, Arial, &quot;Liberation Sans&quot;, &quot;Hiragino Sans GB&quot;, &quot;Source Han Sans CN&quot;, &quot;Source Han Sans SC&quot;, &quot;Microsoft YaHei&quot;, SimHei, sans-serif;
-    font-size: 14px;
-    -webkit-font-smoothing: antialiased;
-    overflow: hidden;
-}
-
-#app {
-    height: 100%;
-}
-
-.el-submenu [class^=fa] {
-    vertical-align: baseline;
-    margin-right: 10px;
-}
-
-.el-menu-item [class^=fa] {
-    vertical-align: baseline;
-    margin-right: 10px;
-}
+        <updated>2019-09-26T07:06:50.000Z</updated>
+        <content type="html"><![CDATA[<p>JS 采用 IEEE 754 双精度版本（64位）</p>
+<pre><code class="language-js">parseFloat((0.1 + 0.2).toFixed(10))
 </code></pre>
 ]]></content>
     </entry>
