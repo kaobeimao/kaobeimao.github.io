@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://kaobeimao.github.io</id>
     <title>kaobeimao</title>
-    <updated>2019-10-07T12:04:03.665Z</updated>
+    <updated>2019-10-07T12:22:28.508Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://kaobeimao.github.io"/>
     <link rel="self" href="https://kaobeimao.github.io/atom.xml"/>
@@ -10,6 +10,32 @@
     <logo>https://kaobeimao.github.io/images/avatar.png</logo>
     <icon>https://kaobeimao.github.io/favicon.ico</icon>
     <rights>All rights reserved 2019, kaobeimao</rights>
+    <entry>
+        <title type="html"><![CDATA[Boolean Skill]]></title>
+        <id>https://kaobeimao.github.io/post/P-LlCRZyP</id>
+        <link href="https://kaobeimao.github.io/post/P-LlCRZyP">
+        </link>
+        <updated>2019-10-07T12:12:32.000Z</updated>
+        <content type="html"><![CDATA[<h2 id="switchcase使用区间">switch/case使用区间</h2>
+<pre><code class="language-js">const age = 26;
+switch (true) {
+    case isNaN(age):
+        console.log(&quot;not a number&quot;);
+        break;
+    case (age &lt; 18):
+        console.log(&quot;under age&quot;);
+        break;
+    case (age &gt;= 18):
+        console.log(&quot;adult&quot;);
+        break;
+    default:
+        console.log(&quot;please set your age&quot;);
+        break;
+}
+
+</code></pre>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[拓展运算符]]></title>
         <id>https://kaobeimao.github.io/post/eSPILDxPr</id>

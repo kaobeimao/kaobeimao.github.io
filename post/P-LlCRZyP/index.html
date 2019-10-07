@@ -5,7 +5,7 @@
     
 <meta charset="utf-8" >
 
-<title>防抖&amp;节流 | kaobeimao</title>
+<title>Boolean Skill | kaobeimao</title>
 <meta name="description" content="舒服嗷铁汁">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -80,67 +80,29 @@
       <div class="content-container">
         <div class="post-detail">
           
-          <h2 class="post-title">防抖&amp;节流</h2>
+          <h2 class="post-title">Boolean Skill</h2>
           <div class="post-info post-detail-info">
-            <span><i class="icon-calendar-outline"></i> 2019-09-29</span>
-            
-              <span>
-                <i class="icon-pricetags-outline"></i>
-                
-                  <a href="https://kaobeimao.github.io/tag/R6i0e5qEG">
-                    js
-                    
-                  </a>
-                
-              </span>
+            <span><i class="icon-calendar-outline"></i> 2019-10-07</span>
             
           </div>
           <div class="post-content">
-            <pre><code class="language-js">/**
- * 防抖函数，返回函数连续调用时，空闲时间必须大于或等于 wait，func 才会执行
- *
- * @param  {function} func        回调函数
- * @param  {number}   wait        表示时间窗口的间隔
- * @param  {boolean}  immediate   设置为ture时，是否立即调用函数
- * @return {function}             返回客户调用函数
- */
-function debounce(func, wait = 50, immediate = true) {
-    let timer, context, args
-
-    // 延迟执行函数
-    const later = () =&gt;
-        setTimeout(() =&gt; {
-            // 延迟函数执行完毕，清空缓存的定时器序号
-            timer = null
-            // 延迟执行的情况下，函数会在延迟函数中执行
-            // 使用到之前缓存的参数和上下文
-            if (!immediate) {
-                func.apply(context, args)
-                context = args = null
-            }
-        }, wait)
-
-    // 这里返回的函数是每次实际调用的函数
-    return function(...params) {
-        // 如果没有创建延迟执行函数（later），就创建一个
-        if (!timer) {
-            timer = later()
-            // 如果是立即执行，调用函数
-            // 否则缓存参数和调用上下文
-            if (immediate) {
-                func.apply(this, params)
-            } else {
-                context = this
-                args = params
-            }
-            // 如果已有延迟执行函数（later），调用的时候清除原来的并重新设定一个
-            // 这样做延迟函数会重新计时
-        } else {
-            clearTimeout(timer)
-            timer = later()
-        }
-    }
+            <h2 id="switchcase使用区间">switch/case使用区间</h2>
+<pre><code class="language-js">const age = 26;
+switch (true) {
+    case isNaN(age):
+        console.log(&quot;not a number&quot;);
+        break;
+    case (age &lt; 18):
+        console.log(&quot;under age&quot;);
+        break;
+    case (age &gt;= 18):
+        console.log(&quot;adult&quot;);
+        break;
+    default:
+        console.log(&quot;please set your age&quot;);
+        break;
 }
+
 </code></pre>
 
           </div>
@@ -148,9 +110,9 @@ function debounce(func, wait = 50, immediate = true) {
 
         
           <div class="next-post">
-            <a class="purple-link" href="https://kaobeimao.github.io/post/liang-shu-zhi-he">
+            <a class="purple-link" href="https://kaobeimao.github.io/post/eSPILDxPr">
               <h3 class="post-title">
-                下一篇：两数之和
+                下一篇：拓展运算符
               </h3>
             </a>
           </div>
