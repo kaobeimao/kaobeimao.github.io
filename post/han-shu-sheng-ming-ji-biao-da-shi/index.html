@@ -5,7 +5,7 @@
     
 <meta charset="utf-8" >
 
-<title>关于 | kaobeimao</title>
+<title>函数声明及表达式 | kaobeimao</title>
 <meta name="description" content="舒服嗷铁汁">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -80,18 +80,57 @@
       <div class="content-container">
         <div class="post-detail">
           
-          <h2 class="post-title">关于</h2>
+          <h2 class="post-title">函数声明及表达式</h2>
           <div class="post-info post-detail-info">
-            <span><i class="icon-calendar-outline"></i> 2019-09-24</span>
+            <span><i class="icon-calendar-outline"></i> 2019-10-07</span>
+            
+              <span>
+                <i class="icon-pricetags-outline"></i>
+                
+                  <a href="https://kaobeimao.github.io/tag/R6i0e5qEG">
+                    js
+                    
+                  </a>
+                
+              </span>
             
           </div>
           <div class="post-content">
-            <p>about</p>
+            <h2 id="函数声明">函数声明</h2>
+<pre><code class="language-js">function add() {}
+</code></pre>
+<h2 id="函数表达式">函数表达式</h2>
+<pre><code class="language-js">const add = function() {}
+or
+const add = () =&gt; {}
+</code></pre>
+<h2 id="区别">区别</h2>
+<pre><code class="language-js">foo(); // hello
+function foo() {
+  console.log('hello');
+}
+
+console.log(num); // undefined
+var num = 1;
+console.log(num); // 1
+</code></pre>
+<p>函数声明存在提升而函数表达式不会。</p>
+<h2 id="小结">小结</h2>
+<p>如果你想在让函数全局通用，在全局作用域上使用函数声明创建函数。<br>
+函数表达式可以有效的避免污染全局作用域。比起你的代码中充斥着各种各样的具名函数，匿名函数可以让你使用后立即丢弃掉。使用函数表达式场景主要有<strong>IIFE</strong>、<strong>回调函数</strong>。</p>
 
           </div>
         </div>
 
         
+          <div class="next-post">
+            <a class="purple-link" href="https://kaobeimao.github.io/post/fang-dou-andjie-liu">
+              <h3 class="post-title">
+                下一篇：防抖&amp;节流
+              </h3>
+            </a>
+          </div>
+          
       </div>
 
       
