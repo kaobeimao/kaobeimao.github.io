@@ -1460,5 +1460,9 @@ a.purple-link {
   border-radius: 16px;
 }
 
+      body {
+        font-size: 1rem;
+      }
+    
       a.purple-link {background: none;}
     
