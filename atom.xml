@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://kaobeimao.github.io</id>
     <title>kaobeimao</title>
-    <updated>2019-10-07T12:31:19.887Z</updated>
+    <updated>2019-10-07T12:39:30.092Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://kaobeimao.github.io"/>
     <link rel="self" href="https://kaobeimao.github.io/atom.xml"/>
@@ -236,7 +236,6 @@ console.log(num); // 1
         <updated>2019-09-29T15:49:32.000Z</updated>
         <content type="html"><![CDATA[<pre><code class="language-js">/**
  * 防抖函数，返回函数连续调用时，空闲时间必须大于或等于 wait，func 才会执行
- *
  * @param  {function} func        回调函数
  * @param  {number}   wait        表示时间窗口的间隔
  * @param  {boolean}  immediate   设置为ture时，是否立即调用函数
