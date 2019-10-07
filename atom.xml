@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://kaobeimao.github.io</id>
     <title>kaobeimao</title>
-    <updated>2019-10-07T11:16:35.424Z</updated>
+    <updated>2019-10-07T12:04:03.665Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://kaobeimao.github.io"/>
     <link rel="self" href="https://kaobeimao.github.io/atom.xml"/>
@@ -10,6 +10,50 @@
     <logo>https://kaobeimao.github.io/images/avatar.png</logo>
     <icon>https://kaobeimao.github.io/favicon.ico</icon>
     <rights>All rights reserved 2019, kaobeimao</rights>
+    <entry>
+        <title type="html"><![CDATA[拓展运算符]]></title>
+        <id>https://kaobeimao.github.io/post/eSPILDxPr</id>
+        <link href="https://kaobeimao.github.io/post/eSPILDxPr">
+        </link>
+        <updated>2019-10-07T11:19:47.000Z</updated>
+        <content type="html"><![CDATA[<blockquote>
+<p>展开语法(Spread syntax), 可以在函数调用/数组构造时, 将数组表达式或者string在语法层面展开；还可以在构造字面量对象时, 将对象表达式按key-value的方式展开。(字面量一般指 [1, 2, 3] 或者 {name: &quot;mdn&quot;} 这种简洁的构造方式)</p>
+</blockquote>
+<h2 id="数组的扩展">数组的扩展</h2>
+<pre><code class="language-js">// 复制数组（浅拷贝）
+const a1 = [1, 2]
+const a2 = [...a1]
+
+// 合并数组（浅拷贝）
+const arr1 = ['1', '2']
+const arr2 = ['c', {a:1}]
+const arr3 = [...arr1, ...arr2]
+
+/**
+ * 将字符串转化为数组
+ * 使用扩展运算符能够正确识别四个字节的 Unicode 字符。
+ * 凡是涉及到操作四个字节的 Unicode 字  * 符的函数，都有这个问题。
+ * 因此，最好都用扩展运算符改写。
+ */
+[...'wdnmd'] // [&quot;w&quot;, &quot;d&quot;, &quot;n&quot;, &quot;m&quot;, &quot;d&quot;]
+
+// 实现了 Iterator 接口的对象
+let nodeList = document.querySelectorAll('div')
+let arr = [...nodeList]
+</code></pre>
+<h2 id="对象的拓展">对象的拓展</h2>
+<pre><code class="language-js">/**
+ * 对象的扩展运算符用于取出参数对象的所有可遍历属性,拷贝到当前对象之中
+ * 等同于使用Object.assign()方法
+ */
+let a = {w: 'xu', y: 'xi'}
+let b = {name: '12'}
+let ab = { ...a, ...b }
+// 等同于
+let ab = Object.assign({}, a, b)
+</code></pre>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[axios封装]]></title>
         <id>https://kaobeimao.github.io/post/cM6N64RQ8</id>
