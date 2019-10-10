@@ -1,0 +1,225 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    
+<meta charset="utf-8" >
+
+<title>JS基础知识点整理 | kaobeimao</title>
+<meta name="description" content="舒服嗷铁汁">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://kaobeimao.github.io/favicon.ico?v=1570696730963">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://kaobeimao.github.io/styles/main.css">
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+
+  </head>
+  <body>
+    <div id="app" class="main">
+      <div class="site-header-container">
+  <div class="site-header">
+    <div class="left">
+      <a href="https://kaobeimao.github.io">
+        <img class="avatar" src="https://kaobeimao.github.io/images/avatar.png?v=1570696730963" alt="" width="32px" height="32px">
+      </a>
+      <a href="https://kaobeimao.github.io">
+        <h1 class="site-title">kaobeimao</h1>
+      </a>
+    </div>
+    <div class="right">
+      <transition name="fade">
+        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
+      </transition>
+    </div>
+  </div>
+</div>
+
+<transition name="fade">
+  <div class="menu-container" style="display: none;" v-show="menuVisible">
+    <div class="menu-list">
+      
+        
+          <a href="/" class="menu purple-link">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="menu purple-link">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="menu purple-link">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="menu purple-link">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+</transition>
+
+
+      <div class="content-container">
+        <div class="post-detail">
+          
+          <h2 class="post-title">JS基础知识点整理</h2>
+          <div class="post-info post-detail-info">
+            <span><i class="icon-calendar-outline"></i> 2019-10-10</span>
+            
+              <span>
+                <i class="icon-pricetags-outline"></i>
+                
+                  <a href="https://kaobeimao.github.io/tag/n0e37Om65">
+                    note
+                    
+                      ，
+                    
+                  </a>
+                
+                  <a href="https://kaobeimao.github.io/tag/R6i0e5qEG">
+                    js
+                    
+                  </a>
+                
+              </span>
+            
+          </div>
+          <div class="post-content">
+            <h2 id="内置类型">内置类型</h2>
+<blockquote>
+<p>JS 中分为七种内置类型，七种内置类型又分为两大类型：基本类型和对象（Object）</p>
+</blockquote>
+<h3 id="原始primitive类型-基本类型">原始（Primitive）类型 | 基本类型</h3>
+<p>6 种原始值，分别是：</p>
+<ul>
+<li><strong>boolean</strong></li>
+<li><strong>null</strong></li>
+<li><strong>undefined</strong></li>
+<li><strong>number</strong></li>
+<li><strong>string</strong></li>
+<li><strong>symbol</strong></li>
+</ul>
+<p>JS 的数字类型是浮点类型的，没有整型。并且浮点类型基于 <strong>IEEE 754</strong> 标准实现。<strong>NaN</strong> 也属于<strong>number</strong> 类型，并且 <strong>NaN</strong> 不等于自身。</p>
+<p>原始类型存储的都是<strong>值</strong>，是没有<strong>函数</strong>可以调用的，比如 <strong>undefined.toString()</strong></p>
+<pre><code class="language-js">let a = 111 // 这只是字面量，不是 number 类型 111为字面量 a为变量
+a.toString() // 使用时候才会转换为 Number 对象类型
+</code></pre>
+<h3 id="对象object类型">对象（Object）类型</h3>
+<p>在 JS 中，除了原始类型那么其他的都是对象类型了。对象类型和原始类型不同的是，原始类型存储的是<strong>值</strong>，对象类型存储的是<strong>地址（指针）</strong>。当你创建了一个对象类型的时候，计算机会在内存中帮我们开辟一个空间来存放值，但是我们需要找到这个空间，这个空间会拥有一个地址（指针）。</p>
+<pre><code class="language-js">const a = []
+</code></pre>
+<p>对于常量 a 来说，假设内存地址（指针）为 #001，那么在地址 #001 的位置存放了值 []，常量 a 存放了地址（指针） #001。</p>
+<p>当我们将变量赋值给另外一个变量时，复制的是原本变量的地址（指针），当我们进行数据修改的时候，就会修改存放在地址（指针）上的值，也就导致了两个变量的值都发生了改变。</p>
+<h2 id="typeof-instanceof">typeof | instanceof</h2>
+<pre><code class="language-js">/**
+ * typeof 对于原始类型来说，除了 null 都可以显示正确的类型
+ */
+typeof 1 // 'number'
+typeof '1' // 'string'
+typeof undefined // 'undefined'
+typeof true // 'boolean'
+typeof Symbol() // 'symbol'
+
+/**
+ * typeof 对于对象来说，除了函数都会显示 object
+ */
+typeof [] // 'object'
+typeof {} // 'object'
+typeof console.log // 'function'
+
+/**
+ * 如果我们想判断一个对象的正确类型，这时候可以考虑使用 instanceof
+ */
+const Person = function() {}
+const p1 = new Person()
+p1 instanceof Person // true
+
+var str = 'hello world'
+str instanceof String // false
+
+var str1 = new String('hello world')
+str1 instanceof String // true
+</code></pre>
+<h2 id="类型转换">类型转换</h2>
+<p>在 JS 中类型转换只有三种情况，分别是：</p>
+<ul>
+<li><strong>转换为布尔值</strong></li>
+<li><strong>转换为数字</strong></li>
+<li><strong>转换为字符串</strong></li>
+</ul>
+<figure data-type="image" tabindex="1"><img src="https://kaobeimao.github.io/post-images/1570696590205.png" alt=""></figure>
+<h3 id="转换为布尔值">转换为布尔值</h3>
+<p>在条件判断时，除了 undefined， null， false， NaN， ''， 0， -0，其他所有值都转为 true，包括所有对象。</p>
+
+          </div>
+        </div>
+
+        
+          <div class="next-post">
+            <a class="purple-link" href="https://kaobeimao.github.io/post/P-LlCRZyP">
+              <h3 class="post-title">
+                下一篇：Boolean Skill
+              </h3>
+            </a>
+          </div>
+          
+      </div>
+
+      
+
+      <div class="site-footer">
+  <div class="slogan">舒服嗷铁汁</div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+  kaobeimao | <a class="rss" href="https://kaobeimao.github.io/atom.xml" target="_blank">RSS</a>
+</div>
+
+
+    </div>
+    <script type="application/javascript">
+
+hljs.initHighlightingOnLoad()
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+  </body>
+</html>
