@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://kaobeimao.github.io</id>
     <title>kaobeimao</title>
-    <updated>2019-10-11T11:56:37.164Z</updated>
+    <updated>2019-10-14T07:51:02.939Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://kaobeimao.github.io"/>
     <link rel="self" href="https://kaobeimao.github.io/atom.xml"/>
@@ -81,6 +81,29 @@ str1 instanceof String // true
 <figure data-type="image" tabindex="1"><img src="https://kaobeimao.github.io/post-images/1570696590205.png" alt=""></figure>
 <h3 id="转换为布尔值">转换为布尔值</h3>
 <p>在条件判断时，除了 undefined， null， false， NaN， &quot;&quot;， 0， -0，其他所有值都转为 true，包括所有对象。</p>
+<h3 id="对象转原始类型">对象转原始类型</h3>
+<p>对象在转换类型的时候，会调用内置的 <strong>[[ToPrimitive]]</strong> 函数</p>
+<h2 id="四则运算符">四则运算符</h2>
+<p>加法运算符，有以下特点：</p>
+<ul>
+<li><strong>运算中其中一方为字符串，那么就会把另一方也转换为字符串</strong></li>
+<li><strong>如果一方不是字符串或者数字，那么会将它转换为数字或者字符串</strong></li>
+</ul>
+<pre><code class="language-js">1 + '1' // '11' 触发特点一，所以将数字 1 转换为字符串
+true + true // 2 触发特点二，所以将 true 转为数字 1
+4 + [1,2,3] // &quot;41,2,3&quot; 触发特点二，所以将数组通过 toString 转为字符串 1,2,3
+
+/**
+ * 因为 + 'b' 等于 NaN，所以结果为 &quot;aNaN&quot;，
+ * 你可能也会在一些代码中看到过 + '1' 的形式来快速获取 number 类型。
+ */
+'a' + + 'b' // -&gt; &quot;aNaN&quot; 
+
+// 除了加法的运算符来说，只要其中一方是数字，那么另一方就会被转为数字
+4 * '3' // 12
+4 * [] // 0
+4 * [1, 2] // NaN
+</code></pre>
 ]]></content>
     </entry>
     <entry>

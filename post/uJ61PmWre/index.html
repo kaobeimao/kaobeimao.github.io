@@ -12,7 +12,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="https://kaobeimao.github.io/favicon.ico?v=1570794977201">
+<link rel="shortcut icon" href="https://kaobeimao.github.io/favicon.ico?v=1571039410174">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link rel="stylesheet" href="https://kaobeimao.github.io/styles/main.css">
 
@@ -30,7 +30,7 @@
   <div class="site-header">
     <div class="left">
       <a href="https://kaobeimao.github.io">
-        <img class="avatar" src="https://kaobeimao.github.io/images/avatar.png?v=1570794977201" alt="" width="32px" height="32px">
+        <img class="avatar" src="https://kaobeimao.github.io/images/avatar.png?v=1571039410174" alt="" width="32px" height="32px">
       </a>
       <a href="https://kaobeimao.github.io">
         <h1 class="site-title">kaobeimao</h1>
@@ -168,6 +168,29 @@ str1 instanceof String // true
 <figure data-type="image" tabindex="1"><img src="https://kaobeimao.github.io/post-images/1570696590205.png" alt=""></figure>
 <h3 id="转换为布尔值">转换为布尔值</h3>
 <p>在条件判断时，除了 undefined， null， false， NaN， &quot;&quot;， 0， -0，其他所有值都转为 true，包括所有对象。</p>
+<h3 id="对象转原始类型">对象转原始类型</h3>
+<p>对象在转换类型的时候，会调用内置的 <strong>[[ToPrimitive]]</strong> 函数</p>
+<h2 id="四则运算符">四则运算符</h2>
+<p>加法运算符，有以下特点：</p>
+<ul>
+<li><strong>运算中其中一方为字符串，那么就会把另一方也转换为字符串</strong></li>
+<li><strong>如果一方不是字符串或者数字，那么会将它转换为数字或者字符串</strong></li>
+</ul>
+<pre><code class="language-js">1 + '1' // '11' 触发特点一，所以将数字 1 转换为字符串
+true + true // 2 触发特点二，所以将 true 转为数字 1
+4 + [1,2,3] // &quot;41,2,3&quot; 触发特点二，所以将数组通过 toString 转为字符串 1,2,3
+
+/**
+ * 因为 + 'b' 等于 NaN，所以结果为 &quot;aNaN&quot;，
+ * 你可能也会在一些代码中看到过 + '1' 的形式来快速获取 number 类型。
+ */
+'a' + + 'b' // -&gt; &quot;aNaN&quot; 
+
+// 除了加法的运算符来说，只要其中一方是数字，那么另一方就会被转为数字
+4 * '3' // 12
+4 * [] // 0
+4 * [1, 2] // NaN
+</code></pre>
 
           </div>
         </div>
@@ -200,7 +223,7 @@ str1 instanceof String // true
       
     
   </div>
-  kaobeimao | <a class="rss" href="https://kaobeimao.github.io/atom.xml" target="_blank">RSS</a>
+  note | <a class="rss" href="https://kaobeimao.github.io/atom.xml" target="_blank">RSS</a>
 </div>
 
 
