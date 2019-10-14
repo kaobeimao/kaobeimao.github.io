@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://kaobeimao.github.io</id>
     <title>kaobeimao</title>
-    <updated>2019-10-14T08:02:58.516Z</updated>
+    <updated>2019-10-14T08:14:33.506Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://kaobeimao.github.io"/>
     <link rel="self" href="https://kaobeimao.github.io/atom.xml"/>
@@ -103,6 +103,22 @@ true + true // 2 触发特点二，所以将 true 转为数字 1
 4 * '3' // 12
 4 * [] // 0
 4 * [1, 2] // NaN
+</code></pre>
+<h2 id="比较运算符">比较运算符</h2>
+<ol>
+<li>如果是对象，就通过 toPrimitive 转换对象</li>
+<li>如果是字符串，就通过 unicode 字符索引来比较</li>
+</ol>
+<pre><code class="language-js">//因为 a 是对象，所以会通过 valueOf 转换为原始类型再比较值
+let a = {
+  valueOf() {
+    return 0
+  },
+  toString() {
+    return '1'
+  }
+}
+a &gt; -1 // true
 </code></pre>
 ]]></content>
     </entry>

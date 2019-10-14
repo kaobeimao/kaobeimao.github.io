@@ -12,7 +12,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="https://kaobeimao.github.io/favicon.ico?v=1571039876874">
+<link rel="shortcut icon" href="https://kaobeimao.github.io/favicon.ico?v=1571040869157">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link rel="stylesheet" href="https://kaobeimao.github.io/styles/main.css">
 
@@ -30,7 +30,7 @@
   <div class="site-header">
     <div class="left">
       <a href="https://kaobeimao.github.io">
-        <img class="avatar" src="https://kaobeimao.github.io/images/avatar.png?v=1571039876874" alt="" width="32px" height="32px">
+        <img class="avatar" src="https://kaobeimao.github.io/images/avatar.png?v=1571040869157" alt="" width="32px" height="32px">
       </a>
       <a href="https://kaobeimao.github.io">
         <h1 class="site-title">kaobeimao</h1>
@@ -190,6 +190,22 @@ true + true // 2 触发特点二，所以将 true 转为数字 1
 4 * '3' // 12
 4 * [] // 0
 4 * [1, 2] // NaN
+</code></pre>
+<h2 id="比较运算符">比较运算符</h2>
+<ol>
+<li>如果是对象，就通过 toPrimitive 转换对象</li>
+<li>如果是字符串，就通过 unicode 字符索引来比较</li>
+</ol>
+<pre><code class="language-js">//因为 a 是对象，所以会通过 valueOf 转换为原始类型再比较值
+let a = {
+  valueOf() {
+    return 0
+  },
+  toString() {
+    return '1'
+  }
+}
+a &gt; -1 // true
 </code></pre>
 
           </div>
