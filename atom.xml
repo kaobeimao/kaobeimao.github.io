@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://kaobeimao.github.io</id>
     <title>kaobeimao</title>
-    <updated>2019-10-18T06:57:17.286Z</updated>
+    <updated>2019-10-18T07:32:23.216Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://kaobeimao.github.io"/>
     <link rel="self" href="https://kaobeimao.github.io/atom.xml"/>
@@ -126,6 +126,30 @@ a &gt; -1 // true
 </code></pre>
 <h2 id="this">this</h2>
 <figure data-type="image" tabindex="2"><img src="https://kaobeimao.github.io/post-images/1571381565249.png" alt=""></figure>
+<h2 id="">=== &amp; ==</h2>
+<p>**==**流程：</p>
+<ol>
+<li>首先会判断两者类型是否相同。相同的话就是比大小了</li>
+<li>类型不相同的话，那么就会进行类型转换</li>
+<li>会先判断是否在对比 <strong>null</strong> 和 <strong>undefined</strong>，是的话就会返回 <strong>true</strong></li>
+<li>判断两者类型是否为 <strong>string</strong> 和 <strong>number</strong>，是的话就会将字符串转换为 <strong>number</strong><pre><code class="language-js">1 == '1'
+      ↓
+1 ==  1
+</code></pre>
+</li>
+<li>判断其中一方是否为 <strong>boolean</strong>，是的话就会把 <strong>boolean</strong> 转为 <strong>number</strong> 再进行判断<pre><code class="language-js">'1' == true
+        ↓
+'1' ==  1
+        ↓
+ 1  ==  1
+</code></pre>
+</li>
+<li>判断其中一方是否为 <strong>object</strong> 且另一方为 <strong>string</strong>、<strong>number</strong> 或者 <strong>symbol</strong>，是的话就会把 <strong>object</strong> 转为原始类型再进行判断<pre><code class="language-js">'1' == { name: 'yck' }
+              ↓
+'1' == '[object Object]'
+</code></pre>
+</li>
+</ol>
 ]]></content>
     </entry>
     <entry>
