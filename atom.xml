@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://kaobeimao.github.io</id>
     <title>kaobeimao</title>
-    <updated>2019-10-18T07:46:45.272Z</updated>
+    <updated>2019-10-18T07:50:59.305Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://kaobeimao.github.io"/>
     <link rel="self" href="https://kaobeimao.github.io/atom.xml"/>
@@ -41,7 +41,7 @@ a.toString() // 使用时候才会转换为 Number 对象类型
 </code></pre>
 <p>对于常量 a 来说，假设内存地址（指针）为 #001，那么在地址 #001 的位置存放了值 []，常量 a 存放了地址（指针） #001。</p>
 <p>当我们将变量赋值给另外一个变量时，复制的是原本变量的地址（指针），当我们进行数据修改的时候，就会修改存放在地址（指针）上的值，也就导致了两个变量的值都发生了改变。</p>
-<h2 id="typeof-instanceof">typeof | instanceof</h2>
+<h2 id="typeof-instanceof">typeof &amp; instanceof</h2>
 <pre><code class="language-js">/**
  * typeof 对于原始类型来说，除了 null 都可以显示正确的类型
  */
