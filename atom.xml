@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://kaobeimao.github.io</id>
     <title>kaobeimao</title>
-    <updated>2019-10-14T08:21:16.551Z</updated>
+    <updated>2019-10-18T06:57:17.286Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://kaobeimao.github.io"/>
     <link rel="self" href="https://kaobeimao.github.io/atom.xml"/>
@@ -124,6 +124,8 @@ let a = {
 }
 a &gt; -1 // true
 </code></pre>
+<h2 id="this">this</h2>
+<figure data-type="image" tabindex="2"><img src="https://kaobeimao.github.io/post-images/1571381565249.png" alt=""></figure>
 ]]></content>
     </entry>
     <entry>
