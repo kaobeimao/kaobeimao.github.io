@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://kaobeimao.github.io</id>
     <title>kaobeimao</title>
-    <updated>2019-10-18T07:50:59.305Z</updated>
+    <updated>2019-10-24T07:17:44.106Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://kaobeimao.github.io"/>
     <link rel="self" href="https://kaobeimao.github.io/atom.xml"/>
@@ -10,6 +10,27 @@
     <logo>https://kaobeimao.github.io/images/avatar.png</logo>
     <icon>https://kaobeimao.github.io/favicon.ico</icon>
     <rights>All rights reserved 2019, kaobeimao</rights>
+    <entry>
+        <title type="html"><![CDATA[Electron+Vue+ElementUI输入框键盘回车事件导致白屏]]></title>
+        <id>https://kaobeimao.github.io/post/tm-55fOUc</id>
+        <link href="https://kaobeimao.github.io/post/tm-55fOUc">
+        </link>
+        <updated>2019-10-24T07:06:05.000Z</updated>
+        <content type="html"><![CDATA[<blockquote>
+<p>When there is only one single-line text input field in a form, the user agent should accept Enter in that field as a request to submit the form.</p>
+</blockquote>
+<h3 id="原因">原因</h3>
+<p>w3c标准规定当一个 form 元素中只有一个输入框时，在该输入框中按下回车应提交该表单。</p>
+<h3 id="解决方法">解决方法</h3>
+<pre><code class="language-html">&lt;!-- 方法一：阻止这一默认行为 --&gt;
+&lt;el-form @submit.native.prevent&gt;
+&lt;/el-form&gt;
+
+&lt;!-- 方法二：添加一个隐藏input --&gt;
+&lt;el-input v-show=&quot;false&quot;&gt;&lt;/el-input&gt;
+</code></pre>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[JS基础知识点整理]]></title>
         <id>https://kaobeimao.github.io/post/uJ61PmWre</id>
@@ -128,7 +149,7 @@ a &gt; -1 // true
 <figure data-type="image" tabindex="2"><img src="https://kaobeimao.github.io/post-images/1571381565249.png" alt=""></figure>
 <h2 id="">=== &amp; ==</h2>
 <p>=== 就是判断两者类型和值是否相同<br>
-==流程：</p>
+== 流程：</p>
 <ol>
 <li>首先会判断两者类型是否相同。相同的话就是比大小了</li>
 <li>类型不相同的话，那么就会进行类型转换</li>

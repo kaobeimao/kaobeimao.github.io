@@ -5,7 +5,7 @@
     
 <meta charset="utf-8" >
 
-<title>util | kaobeimao</title>
+<title>Electron+Vue+ElementUI输入框键盘回车事件导致白屏 | kaobeimao</title>
 <meta name="description" content="舒服嗷铁汁">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -78,55 +78,53 @@
 
 
       <div class="content-container">
+        <div class="post-detail">
+          
+          <h2 class="post-title">Electron+Vue+ElementUI输入框键盘回车事件导致白屏</h2>
+          <div class="post-info post-detail-info">
+            <span><i class="icon-calendar-outline"></i> 2019-10-24</span>
+            
+              <span>
+                <i class="icon-pricetags-outline"></i>
+                
+                  <a href="https://kaobeimao.github.io/tag/n0e37Om65">
+                    note
+                    
+                  </a>
+                
+              </span>
+            
+          </div>
+          <div class="post-content">
+            <blockquote>
+<p>When there is only one single-line text input field in a form, the user agent should accept Enter in that field as a request to submit the form.</p>
+</blockquote>
+<h3 id="原因">原因</h3>
+<p>w3c标准规定当一个 form 元素中只有一个输入框时，在该输入框中按下回车应提交该表单。</p>
+<h3 id="解决方法">解决方法</h3>
+<pre><code class="language-html">&lt;!-- 方法一：阻止这一默认行为 --&gt;
+&lt;el-form @submit.native.prevent&gt;
+&lt;/el-form&gt;
 
-        <div class="current-tag-container">
-          <h2 class="title">
-            <i class="icon icon-pricetags-outline"></i> util
-          </h2> 
+&lt;!-- 方法二：添加一个隐藏input --&gt;
+&lt;el-input v-show=&quot;false&quot;&gt;&lt;/el-input&gt;
+</code></pre>
+
+          </div>
         </div>
 
         
-<section class="post-item">
-    <div class="content">
-      <a href="https://kaobeimao.github.io/post/cM6N64RQ8">
-        <h2 class="post-title">axios封装</h2>
-      </a>
-      <div class="post-abstract">
-        
+          <div class="next-post">
+            <a class="purple-link" href="https://kaobeimao.github.io/post/uJ61PmWre">
+              <h3 class="post-title">
+                下一篇：JS基础知识点整理
+              </h3>
+            </a>
+          </div>
+          
       </div>
-      <div class="post-info">
-        <span><i class="icon icon-calendar-outline"></i> 2019-10-07</span>
-        
-          <span>
-            <i class="icon icon-pricetags-outline"></i>
-            
-              <a href="https://kaobeimao.github.io/tag/cxPYXAlaG">
-                util
-                
-                  ，
-                
-              </a>
-            
-              <a href="https://kaobeimao.github.io/tag/n0e37Om65">
-                note
-                
-              </a>
-            
-          </span>
-        
-      </div>
-    </div>
-    
-  </section>
 
-
-<div class="pagination-container">
-  
-  
-</div>
-
-
-      </div>
+      
 
       <div class="site-footer">
   <div class="slogan">舒服嗷铁汁</div>
