@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://kaobeimao.github.io</id>
     <title>kaobeimao</title>
-    <updated>2019-10-24T07:22:51.047Z</updated>
+    <updated>2019-10-27T14:35:41.337Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://kaobeimao.github.io"/>
     <link rel="self" href="https://kaobeimao.github.io/atom.xml"/>
@@ -10,6 +10,244 @@
     <logo>https://kaobeimao.github.io/images/avatar.png</logo>
     <icon>https://kaobeimao.github.io/favicon.ico</icon>
     <rights>All rights reserved 2019, kaobeimao</rights>
+    <entry>
+        <title type="html"><![CDATA[uni-app自定义TabBar]]></title>
+        <id>https://kaobeimao.github.io/post/1pcYfEj_2</id>
+        <link href="https://kaobeimao.github.io/post/1pcYfEj_2">
+        </link>
+        <updated>2019-10-27T13:58:14.000Z</updated>
+        <content type="html"><![CDATA[<h3 id="vuex管理状态">Vuex管理状态</h3>
+<pre><code class="language-js">// state.js
+export default {
+    currentTabBarIndex: 0,
+    myTabBar: [],
+    operatorTabBar: [
+        {
+            &quot;pagePath&quot;: &quot;xxx&quot;,
+            &quot;text&quot;: &quot;xxx&quot;,
+            &quot;iconPath&quot;: &quot;xxx&quot;,
+            &quot;selectedIconPath&quot;: &quot;xxx&quot;
+        },
+        {
+            &quot;pagePath&quot;: &quot;xxx&quot;,
+            &quot;text&quot;: &quot;xxx&quot;,
+            &quot;iconPath&quot;: &quot;xxx&quot;,
+            &quot;selectedIconPath&quot;: &quot;xxx&quot;
+        },
+        {
+            &quot;pagePath&quot;: &quot;xxx&quot;,
+            &quot;text&quot;: &quot;xxx&quot;,
+            &quot;iconPath&quot;: &quot;xxx&quot;,
+            &quot;selectedIconPath&quot;: &quot;xxx&quot;
+        },
+    ],
+    workerTabBar: [
+        {
+            &quot;pagePath&quot;: &quot;xxx&quot;,
+            &quot;text&quot;: &quot;xxx&quot;,
+            &quot;iconPath&quot;: &quot;xxx&quot;,
+            &quot;selectedIconPath&quot;: &quot;xxx&quot;
+        },
+        {
+            &quot;pagePath&quot;: &quot;xxx&quot;,
+            &quot;text&quot;: &quot;xxx&quot;,
+            &quot;iconPath&quot;: &quot;xxx&quot;,
+            &quot;selectedIconPath&quot;: &quot;xxx&quot;
+        },
+    ]
+}
+
+// mutation-types.js
+export const SET_CURRENT_TAB_BAR_INDEX = 'SET_CURRENT_TAB_BAR_INDEX'
+export const SET_TAB_BAR = 'SET_TAB_BAR'
+
+// mutation.js
+import * as types from './mutation-types'
+
+export default {
+    [types.SET_CURRENT_TAB_BAR_INDEX](state, index) {
+        state.currentTabBarIndex = index
+    },
+    [types.SET_TAB_BAR](state, list) {
+        state.myTabBar = list
+    }
+}
+</code></pre>
+<h3 id="tabbar组件">TabBar组件</h3>
+<p>使用cover-view避免小程序canvas层级最高的显示问题</p>
+<pre><code class="language-html">&lt;!-- template --&gt;
+&lt;template&gt;
+    &lt;cover-view class=&quot;footer&quot;&gt;
+        &lt;cover-view :class=&quot;'footer_item ' + (currentTabBarIndex === index? 'active' : '')&quot; :style=&quot;'width:'+item_width&quot;
+            @click=&quot;setCurrentTabBarIndex(index)&quot; v-for=&quot;(item,index) in myTabBar&quot; :key=&quot;index&quot;&gt;
+            &lt;cover-image :src=&quot;index==currentTabBarIndex?item.selectedIconPath:item.iconPath&quot; mode=&quot;&quot;&gt;&lt;/cover-image&gt;
+            &lt;cover-view&gt;item.text&lt;/cover-view&gt;
+        &lt;/cover-view&gt;
+    &lt;/cover-view&gt;
+&lt;/template&gt;
+</code></pre>
+<pre><code class="language-js">// script
+import { mapState, mapMutations } from 'vuex'
+import * as types from '../../store/mutation-types'
+
+export default {
+    data() {
+        return {}
+    },
+    computed: {
+        ...mapState(['currentTabBarIndex', 'myTabBar']),
+        item_width() {
+            const length = this.myTabBar.length
+            switch (length) {
+                case 1:
+                    return '100%'
+                    break
+                case 2:
+                    return '50%'
+                    break
+                case 3:
+                    return '33.3%'
+                    break
+                case 4:
+                    return '25%'
+                    break
+                case 5:
+                    return '20%'
+                    break
+                default:
+                    break
+            }
+        }
+    },
+    methods: {
+        ...mapMutations({
+            setCurrentTabBarIndex: types.SET_CURRENT_TAB_BAR_INDEX
+        })
+    }
+}
+</code></pre>
+<pre><code class="language-css">&lt;style lang=&quot;scss&quot; scoped&gt;
+.footer {
+    @include border-top-1px;
+    height: 100upx;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #ffffff;
+    color: #606770;
+}
+.footer_item {
+    float: left;
+    text-align: center;
+    font-size: 24upx;
+    height: 100upx;
+
+    &amp;.active {
+        color: #007aff;
+    }
+}
+.footer_item cover-image {
+    width: 50upx;
+    height: 50upx;
+    margin: 6upx auto;
+}
+&lt;/style&gt;
+</code></pre>
+<h3 id="layout页面">layout页面</h3>
+<p>layout组件作为首页，把想要成为TabBar页面的组件和<strong>TabBar</strong>组件一起引入，使用<strong>v-if</strong>显示隐藏</p>
+<pre><code class="language-html">&lt;template&gt;
+    &lt;div class=&quot;layout&quot;&gt;
+        &lt;xxx v-if=&quot;currentPageName === 'xxx'&quot; /&gt;
+        &lt;xxx v-else-if=&quot;currentPageName === 'xxx'&quot; /&gt;
+        &lt;xxx v-else-if=&quot;currentPageName === 'xxx'&quot; /&gt;
+        &lt;xxx v-else-if=&quot;currentPageName === 'xxx'&quot; /&gt;
+        &lt;xxx v-else-if=&quot;currentPageName === 'xxx'&quot; /&gt;
+        &lt;xxx v-else-if=&quot;currentPageName === 'xxx'&quot; /&gt;
+        &lt;TabBar v-if=&quot;showTabBar&quot; /&gt;
+    &lt;/div&gt;
+&lt;/template&gt;
+</code></pre>
+<pre><code class="language-js">import { mapState, mapMutations } from 'vuex'
+import * as types from '../../store/mutation-types'
+import TabBar from '../../components/tab-bar/TabBar'
+import xxx from '../overview/index'
+import xxx from '../community/index'
+import xxx from '../card/index'
+import xxx from '../my/index'
+import xxx from '../worker-station-create/index'
+import xxx from '../worker-station-list/index'
+
+export default {
+    components: {
+        TabBar,
+        xxx,
+        xxx,
+        xxx,
+        xxx,
+        xxx,
+        xxx
+    },
+    data() {
+        return {
+            showTabBar: false
+        }
+    },
+    computed: {
+        ...mapState([
+            'currentTabBarIndex',
+            'myTabBar',
+            'workerTabBar',
+            'operatorTabBar'
+        ]),
+        currentPageName() {
+            try {
+                if (this.myTabBar.length) {
+                    this.checkUser()
+                    return this.myTabBar[this.currentTabBarIndex].text
+                } else {
+                    return ''
+                }
+            } catch (error) {
+                return ''
+            }
+        }
+    },
+    onLoad() {
+        this.checkUser()
+        this.handleShowTabBar()
+    },
+    methods: {
+        ...mapMutations({
+            setTabBar: types.SET_TAB_BAR
+        }),
+        checkUser() {
+            const myTabBar = '权限判断' ? 'workerTabBar' : 'operatorTabBar'
+            this.setTabBar(this[myTabBar])
+        },
+        handleShowTabBar() {
+            /**
+             * ！！！安卓设备问题
+             * tabbar延迟加载，防止被canvas覆盖
+             */
+            setTimeout(() =&gt; {
+                this.showTabBar = true
+            }, 500)
+        }
+    }
+}
+</code></pre>
+<pre><code class="language-css">&lt;style lang=&quot;scss&quot; scoped&gt;
+.layout {
+    text-align: center;
+    padding-bottom: 100upx;
+}
+&lt;/style&gt;
+</code></pre>
+<h3 id="tabbar页面">TabBar页面</h3>
+<p>不能使用onLoad和onShow生命周期，建议使用<strong>mounted</strong>初始化数据</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Electron+ElementUI输入框键盘回车事件白屏]]></title>
         <id>https://kaobeimao.github.io/post/tm-55fOUc</id>
