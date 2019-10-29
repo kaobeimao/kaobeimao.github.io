@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://kaobeimao.github.io</id>
     <title>kaobeimao</title>
-    <updated>2019-10-27T14:35:41.337Z</updated>
+    <updated>2019-10-29T10:26:27.642Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://kaobeimao.github.io"/>
     <link rel="self" href="https://kaobeimao.github.io/atom.xml"/>
@@ -10,6 +10,36 @@
     <logo>https://kaobeimao.github.io/images/avatar.png</logo>
     <icon>https://kaobeimao.github.io/favicon.ico</icon>
     <rights>All rights reserved 2019, kaobeimao</rights>
+    <entry>
+        <title type="html"><![CDATA[throw]]></title>
+        <id>https://kaobeimao.github.io/post/eEFgrP9g4</id>
+        <link href="https://kaobeimao.github.io/post/eEFgrP9g4">
+        </link>
+        <updated>2019-10-28T06:04:48.000Z</updated>
+        <content type="html"><![CDATA[<blockquote>
+<p>throw语句用来抛出一个用户自定义的异常。当前函数的执行将被停止（throw之后的语句将不会执行），并且控制将被传递到调用堆栈中的第一个catch块。如果调用者函数中没有catch块，程序将会终止。</p>
+</blockquote>
+<h3 id="示例">示例</h3>
+<pre><code class="language-js">throw &quot;Error2&quot; // 抛出了一个值为字符串的异常
+throw 42       // 抛出了一个值为整数42的异常
+throw true     // 抛出了一个值为true的异常
+</code></pre>
+<h3 id="抛出对象">抛出对象</h3>
+<pre><code class="language-js">function MyException(message) {
+    this.name = &quot;MyException&quot;
+    this.message = message
+}
+
+try {
+    ...
+    throw new MyException('xxx')
+} catch (error) {
+    ...
+    console.log(error.message, error.name)
+}
+</code></pre>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[uni-app自定义TabBar]]></title>
         <id>https://kaobeimao.github.io/post/1pcYfEj_2</id>
@@ -712,17 +742,6 @@ var twoSum = function(nums, target) {
         obj[nums[i]] = i
     }
 };
-</code></pre>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[浮点数的精度问题]]></title>
-        <id>https://kaobeimao.github.io/post/test</id>
-        <link href="https://kaobeimao.github.io/post/test">
-        </link>
-        <updated>2019-09-26T07:06:50.000Z</updated>
-        <content type="html"><![CDATA[<p>JS 采用 IEEE 754 双精度版本（64位）</p>
-<pre><code class="language-js">parseFloat((0.1 + 0.2).toFixed(10))
 </code></pre>
 ]]></content>
     </entry>

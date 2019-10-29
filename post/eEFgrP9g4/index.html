@@ -1,9 +1,11 @@
+
+<!DOCTYPE html>
 <html>
   <head>
     
 <meta charset="utf-8" >
 
-<title>kaobeimao</title>
+<title>throw | kaobeimao</title>
 <meta name="description" content="舒服嗷铁汁">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -75,25 +77,65 @@
 </transition>
 
 
-        <div class="content-container">
+      <div class="content-container">
+        <div class="post-detail">
           
-          <div class="tags-container">
+          <h2 class="post-title">throw</h2>
+          <div class="post-info post-detail-info">
+            <span><i class="icon-calendar-outline"></i> 2019-10-28</span>
             
-              <a class="tag" href="https://kaobeimao.github.io/tag/R6i0e5qEG">js</a>
-            
-              <a class="tag" href="https://kaobeimao.github.io/tag/e72YuKUCI">vue</a>
-            
-              <a class="tag" href="https://kaobeimao.github.io/tag/1pfcsHdmN">小程序</a>
-            
-              <a class="tag" href="https://kaobeimao.github.io/tag/n0e37Om65">note</a>
-            
-              <a class="tag" href="https://kaobeimao.github.io/tag/cxPYXAlaG">util</a>
+              <span>
+                <i class="icon-pricetags-outline"></i>
+                
+                  <a href="https://kaobeimao.github.io/tag/R6i0e5qEG">
+                    js
+                    
+                  </a>
+                
+              </span>
             
           </div>
+          <div class="post-content">
+            <blockquote>
+<p>throw语句用来抛出一个用户自定义的异常。当前函数的执行将被停止（throw之后的语句将不会执行），并且控制将被传递到调用堆栈中的第一个catch块。如果调用者函数中没有catch块，程序将会终止。</p>
+</blockquote>
+<h3 id="示例">示例</h3>
+<pre><code class="language-js">throw &quot;Error2&quot; // 抛出了一个值为字符串的异常
+throw 42       // 抛出了一个值为整数42的异常
+throw true     // 抛出了一个值为true的异常
+</code></pre>
+<h3 id="抛出对象">抛出对象</h3>
+<pre><code class="language-js">function MyException(message) {
+    this.name = &quot;MyException&quot;
+    this.message = message
+}
 
+try {
+    ...
+    throw new MyException('xxx')
+} catch (error) {
+    ...
+    console.log(error.message, error.name)
+}
+</code></pre>
+
+          </div>
         </div>
 
-        <div class="site-footer">
+        
+          <div class="next-post">
+            <a class="purple-link" href="https://kaobeimao.github.io/post/1pcYfEj_2">
+              <h3 class="post-title">
+                下一篇：uni-app自定义TabBar
+              </h3>
+            </a>
+          </div>
+          
+      </div>
+
+      
+
+      <div class="site-footer">
   <div class="slogan">舒服嗷铁汁</div>
   <div class="social-container">
     
@@ -112,8 +154,8 @@
 </div>
 
 
-      </div>
-      <script type="application/javascript">
+    </div>
+    <script type="application/javascript">
 
 hljs.initHighlightingOnLoad()
 
@@ -129,6 +171,5 @@ var app = new Vue({
 
 
 
-    </div>
   </body>
 </html>
