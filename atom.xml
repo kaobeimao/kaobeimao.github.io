@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://kaobeimao.github.io</id>
     <title>kaobeimao</title>
-    <updated>2019-10-29T10:27:44.068Z</updated>
+    <updated>2019-10-31T10:26:53.069Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://kaobeimao.github.io"/>
     <link rel="self" href="https://kaobeimao.github.io/atom.xml"/>
@@ -325,7 +325,7 @@ export default {
 a.toString() // 使用时候才会转换为 Number 对象类型
 </code></pre>
 <h3 id="对象object类型">对象（Object）类型</h3>
-<p>在 JS 中，除了原始类型那么其他的都是对象类型了。对象类型和原始类型不同的是，原始类型存储的是<strong>值</strong>，对象类型存储的是<strong>地址（指针）</strong>。当你创建了一个对象类型的时候，计算机会在内存中帮我们开辟一个空间来存放值，但是我们需要找到这个空间，这个空间会拥有一个地址（指针）。</p>
+<p>在 JS 中，除了原始类型那么其他的都是对象类型了。对象类型和原始类型不同的是，原始类型存储的是 <strong>值</strong>，对象类型存储的是 <strong>地址（指针）</strong>。当你创建了一个对象类型的时候，计算机会在内存中帮我们开辟一个空间来存放值，但是我们需要找到这个空间，这个空间会拥有一个地址（指针）。</p>
 <pre><code class="language-js">const a = []
 </code></pre>
 <p>对于常量 a 来说，假设内存地址（指针）为 #001，那么在地址 #001 的位置存放了值 []，常量 a 存放了地址（指针） #001。</p>
@@ -419,27 +419,79 @@ a &gt; -1 // true
 <p>=== 就是判断两者类型和值是否相同<br>
 == 流程：</p>
 <ol>
-<li>首先会判断两者类型是否相同。相同的话就是比大小了</li>
-<li>类型不相同的话，那么就会进行类型转换</li>
-<li>会先判断是否在对比 <strong>null</strong> 和 <strong>undefined</strong>，是的话就会返回 <strong>true</strong></li>
-<li>判断两者类型是否为 <strong>string</strong> 和 <strong>number</strong>，是的话就会将字符串转换为 <strong>number</strong><pre><code class="language-js">1 == '1'
+<li>
+<p>首先会判断两者类型是否相同。相同的话就是比大小了</p>
+</li>
+<li>
+<p>类型不相同的话，那么就会进行类型转换</p>
+</li>
+<li>
+<p>会先判断是否在对比 <strong>null</strong> 和 <strong>undefined</strong>，是的话就会返回 <strong>true</strong></p>
+</li>
+<li>
+<p>判断两者类型是否为 <strong>string</strong> 和 <strong>number</strong>，是的话就会将字符串转换为 <strong>number</strong></p>
+<pre><code class="language-js">1 == '1'
       ↓
 1 ==  1
 </code></pre>
 </li>
-<li>判断其中一方是否为 <strong>boolean</strong>，是的话就会把 <strong>boolean</strong> 转为 <strong>number</strong> 再进行判断<pre><code class="language-js">'1' == true
+<li>
+<p>判断其中一方是否为 <strong>boolean</strong>，是的话就会把 <strong>boolean</strong> 转为 <strong>number</strong> 再进行判断</p>
+<pre><code class="language-js">'1' == true
         ↓
 '1' ==  1
         ↓
  1  ==  1
 </code></pre>
 </li>
-<li>判断其中一方是否为 <strong>object</strong> 且另一方为 <strong>string</strong>、<strong>number</strong> 或者 <strong>symbol</strong>，是的话就会把 <strong>object</strong> 转为原始类型再进行判断<pre><code class="language-js">'1' == { name: 'yck' }
+<li>
+<p>判断其中一方是否为 <strong>object</strong> 且另一方为 <strong>string</strong>、<strong>number</strong> 或者 <strong>symbol</strong>，是的话就会把 <strong>object</strong> 转为原始类型再进行判断</p>
+<pre><code class="language-js">'1' == { name: 'yck' }
               ↓
 '1' == '[object Object]'
 </code></pre>
 </li>
 </ol>
+<h2 id="闭包">闭包</h2>
+<p>函数 A 内部有一个函数 B，函数 B 可以访问到函数 A 中的变量，那么函数 B 就是闭包。在 JS 中，闭包存在的意义就是让我们可以间接访问函数内部的变量。</p>
+<pre><code class="language-js">function A() {
+  let a = 1
+  window.B = function () {
+      console.log(a)
+  }
+}
+A()
+B() // 1
+</code></pre>
+<h2 id="深浅拷贝">深浅拷贝</h2>
+<p>对象类型在赋值的过程中其实是复制了地址，从而会导致改变了一方其他也都被改变的情况。可以使用浅拷贝来解决这个情况</p>
+<ol>
+<li>
+<p><strong>Object.assign</strong> 只会拷贝所有的属性值到新的对象中，如果属性值是对象的话，拷贝的是地址，所以并不是深拷贝。</p>
+</li>
+<li>
+<p><strong>...</strong> 展开运算符</p>
+</li>
+</ol>
+<pre><code class="language-js">// Object.assign
+let a = {
+  age: 1
+}
+let b = Object.assign({}, a)
+a.age = 2
+console.log(b.age) // 1
+
+// ...
+let a = {
+  age: 1
+}
+let b = { ...a }
+a.age = 2
+console.log(b.age) // 1
+</code></pre>
+<p><strong>JSON.parse(JSON.stringify(object))</strong> 能解决大多数深拷贝需求</p>
+<h2 id="原型">原型</h2>
+<p>...</p>
 ]]></content>
     </entry>
     <entry>
