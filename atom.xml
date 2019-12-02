@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://kaobeimao.github.io</id>
     <title>kaobeimao</title>
-    <updated>2019-12-02T08:38:14.065Z</updated>
+    <updated>2019-12-02T08:41:01.737Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://kaobeimao.github.io"/>
     <link rel="self" href="https://kaobeimao.github.io/atom.xml"/>
@@ -520,7 +520,7 @@ switch (true) {
 ]]></content>
     </entry>
     <entry>
-        <title type="html"><![CDATA[拓展运算符]]></title>
+        <title type="html"><![CDATA[扩展运算符]]></title>
         <id>https://kaobeimao.github.io/post/eSPILDxPr</id>
         <link href="https://kaobeimao.github.io/post/eSPILDxPr">
         </link>
