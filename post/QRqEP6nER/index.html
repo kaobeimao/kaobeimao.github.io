@@ -1,10 +1,11 @@
 
+<!DOCTYPE html>
 <html>
   <head>
     
 <meta charset="utf-8" >
 
-<title>kaobeimao</title>
+<title>ts接口 | kaobeimao</title>
 <meta name="description" content="舒服嗷铁汁">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -77,96 +78,60 @@
 
 
       <div class="content-container">
-        
-        
-<section class="post-item">
-    <div class="content">
-      <a href="https://kaobeimao.github.io/post/fang-dou-andjie-liu/">
-        <h2 class="post-title">防抖&amp;节流</h2>
-      </a>
-      <div class="post-abstract">
-        
-      </div>
-      <div class="post-info">
-        <span><i class="icon icon-calendar-outline"></i> 2019-09-29</span>
-        
-          <span>
-            <i class="icon icon-pricetags-outline"></i>
+        <div class="post-detail">
+          
+          <h2 class="post-title">ts接口</h2>
+          <div class="post-info post-detail-info">
+            <span><i class="icon-calendar-outline"></i> 2020-04-14</span>
             
-              <a href="https://kaobeimao.github.io/tag/R6i0e5qEG/">
-                js
+              <span>
+                <i class="icon-pricetags-outline"></i>
                 
-              </a>
-            
-          </span>
-        
-      </div>
-    </div>
-    
-  </section>
-
-<section class="post-item">
-    <div class="content">
-      <a href="https://kaobeimao.github.io/post/liang-shu-zhi-he/">
-        <h2 class="post-title">两数之和</h2>
-      </a>
-      <div class="post-abstract">
-        
-      </div>
-      <div class="post-info">
-        <span><i class="icon icon-calendar-outline"></i> 2019-09-28</span>
-        
-          <span>
-            <i class="icon icon-pricetags-outline"></i>
-            
-              <a href="https://kaobeimao.github.io/tag/R6i0e5qEG/">
-                js
+                  <a href="https://kaobeimao.github.io/tag/bkYElpkmC/">
+                    ts
+                    
+                  </a>
                 
-              </a>
+              </span>
             
-          </span>
+          </div>
+          <div class="post-content">
+            <h3 id="接口的定义">接口的定义</h3>
+<p>TypeScript 中的接口是一个非常灵活的概念，除了可用于对类的一部分行为进行抽象以外，也常用于对「对象的形状（Shape）」进行描述。 <code>hehe</code></p>
+<pre><code class="language-ts">// 定义接口
+interface Person {
+    readonly id: number; // 只读属性，只能在被创建时被赋值
+    name: string;
+    age?: number; // 表示可选属性
+    /**
+     * [propName: string]定义任意属性取string或number
+     * 确定属性和可选属性的类型都必须是它的类型的子集
+     */
+    [propName: string]: string | number;
+}
+
+// 赋值的时候，变量的形状必须和接口的形状保持一致。
+let tom: Person = {
+    name: 'Tom',
+    age: 25
+};
+</code></pre>
+
+          </div>
+        </div>
+
         
+          <div class="next-post">
+            <a class="purple-link" href="https://kaobeimao.github.io/post/ITHA19twK/">
+              <h3 class="post-title">
+                下一篇：docker安装mysql+phpmydamin
+              </h3>
+            </a>
+          </div>
+          
       </div>
-    </div>
-    
-  </section>
 
-<section class="post-item">
-    <div class="content">
-      <a href="https://kaobeimao.github.io/post/test/">
-        <h2 class="post-title">浮点数的精度问题</h2>
-      </a>
-      <div class="post-abstract">
-        
-      </div>
-      <div class="post-info">
-        <span><i class="icon icon-calendar-outline"></i> 2019-09-26</span>
-        
-          <span>
-            <i class="icon icon-pricetags-outline"></i>
-            
-              <a href="https://kaobeimao.github.io/tag/R6i0e5qEG/">
-                js
-                
-              </a>
-            
-          </span>
-        
-      </div>
-    </div>
-    
-  </section>
-
-
-<div class="pagination-container">
-  
-    <a href="https://kaobeimao.github.io/" class="prev"><i class="icon-arrow-ios-back-outline"></i> 上一页</a>
-  
-  
-</div>
-
-
-      </div>
+      
 
       <div class="site-footer">
   <div class="slogan">舒服嗷铁汁</div>

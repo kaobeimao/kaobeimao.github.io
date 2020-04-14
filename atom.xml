@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://kaobeimao.github.io</id>
     <title>kaobeimao</title>
-    <updated>2020-03-18T07:31:37.117Z</updated>
+    <updated>2020-04-14T08:56:06.500Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://kaobeimao.github.io"/>
     <link rel="self" href="https://kaobeimao.github.io/atom.xml"/>
@@ -10,6 +10,34 @@
     <logo>https://kaobeimao.github.io/images/avatar.png</logo>
     <icon>https://kaobeimao.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, kaobeimao</rights>
+    <entry>
+        <title type="html"><![CDATA[ts接口]]></title>
+        <id>https://kaobeimao.github.io/post/QRqEP6nER/</id>
+        <link href="https://kaobeimao.github.io/post/QRqEP6nER/">
+        </link>
+        <updated>2020-04-14T08:30:03.000Z</updated>
+        <content type="html"><![CDATA[<h3 id="接口的定义">接口的定义</h3>
+<p>TypeScript 中的接口是一个非常灵活的概念，除了可用于对类的一部分行为进行抽象以外，也常用于对「对象的形状（Shape）」进行描述。 <code>hehe</code></p>
+<pre><code class="language-ts">// 定义接口
+interface Person {
+    readonly id: number; // 只读属性，只能在被创建时被赋值
+    name: string;
+    age?: number; // 表示可选属性
+    /**
+     * [propName: string]定义任意属性取string或number
+     * 确定属性和可选属性的类型都必须是它的类型的子集
+     */
+    [propName: string]: string | number;
+}
+
+// 赋值的时候，变量的形状必须和接口的形状保持一致。
+let tom: Person = {
+    name: 'Tom',
+    age: 25
+};
+</code></pre>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[docker安装mysql+phpmydamin]]></title>
         <id>https://kaobeimao.github.io/post/ITHA19twK/</id>
@@ -739,59 +767,6 @@ console.log(num); // 1
 <h2 id="小结">小结</h2>
 <p>如果你想在让函数全局通用，在全局作用域上使用函数声明创建函数。<br>
 函数表达式可以有效的避免污染全局作用域。比起你的代码中充斥着各种各样的具名函数，匿名函数可以让你使用后立即丢弃掉。使用函数表达式场景主要有<strong>IIFE</strong>、<strong>回调函数</strong>。</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[防抖&节流]]></title>
-        <id>https://kaobeimao.github.io/post/fang-dou-andjie-liu/</id>
-        <link href="https://kaobeimao.github.io/post/fang-dou-andjie-liu/">
-        </link>
-        <updated>2019-09-29T15:49:32.000Z</updated>
-        <content type="html"><![CDATA[<pre><code class="language-js">/**
- * 防抖函数，返回函数连续调用时，空闲时间必须大于或等于 wait，func 才会执行
- * @param  {function} func        回调函数
- * @param  {number}   wait        表示时间窗口的间隔
- * @param  {boolean}  immediate   设置为ture时，是否立即调用函数
- * @return {function}             返回客户调用函数
- */
-function debounce(func, wait = 50, immediate = true) {
-    let timer, context, args
-
-    // 延迟执行函数
-    const later = () =&gt;
-        setTimeout(() =&gt; {
-            // 延迟函数执行完毕，清空缓存的定时器序号
-            timer = null
-            // 延迟执行的情况下，函数会在延迟函数中执行
-            // 使用到之前缓存的参数和上下文
-            if (!immediate) {
-                func.apply(context, args)
-                context = args = null
-            }
-        }, wait)
-
-    // 这里返回的函数是每次实际调用的函数
-    return function(...params) {
-        // 如果没有创建延迟执行函数（later），就创建一个
-        if (!timer) {
-            timer = later()
-            // 如果是立即执行，调用函数
-            // 否则缓存参数和调用上下文
-            if (immediate) {
-                func.apply(this, params)
-            } else {
-                context = this
-                args = params
-            }
-            // 如果已有延迟执行函数（later），调用的时候清除原来的并重新设定一个
-            // 这样做延迟函数会重新计时
-        } else {
-            clearTimeout(timer)
-            timer = later()
-        }
-    }
-}
-</code></pre>
 ]]></content>
     </entry>
 </feed>
