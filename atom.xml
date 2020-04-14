@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://kaobeimao.github.io</id>
     <title>kaobeimao</title>
-    <updated>2020-04-14T09:22:56.904Z</updated>
+    <updated>2020-04-14T09:41:54.723Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://kaobeimao.github.io"/>
     <link rel="self" href="https://kaobeimao.github.io/atom.xml"/>
@@ -18,7 +18,7 @@
         <updated>2020-04-14T08:30:03.000Z</updated>
         <content type="html"><![CDATA[<h3 id="接口的定义">接口的定义</h3>
 <p>TypeScript 中的接口是一个非常灵活的概念，除了可用于对类的一部分行为进行抽象以外，也常用于对「对象的形状（Shape）」进行描述。 <code>hehe</code></p>
-<pre><code class="language-ts">// 定义接口
+<pre><code class="language-js">// 定义接口
 interface Person {
     readonly id: number; // 只读属性，只能在被创建时被赋值
     name: string;
