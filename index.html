@@ -1,422 +1,341 @@
-
-<html>
-  <head>
-    
-<meta charset="utf-8" >
-
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
 <title>kaobeimao</title>
-<meta name="description" content="舒服嗷铁汁">
-
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
-
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="https://kaobeimao.github.io/favicon.ico?v=1586854467323">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="shortcut icon" href="https://kaobeimao.github.io/favicon.ico">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css">
+<link rel="stylesheet" href="https://kaobeimao.github.io/media/css/tailwind.css">
 <link rel="stylesheet" href="https://kaobeimao.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="kaobeimao - Atom Feed" href="https://kaobeimao.github.io/atom.xml">
 
+    
 
+  <meta name="description" content="舒服嗷铁汁" />
+</head>
+<body>
+  <div class="antialiased flex flex-col min-h-screen" id="app">
 
-<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
-
-
-
-  </head>
-  <body>
-    <div id="app" class="main">
-      <div class="site-header-container">
-  <div class="site-header">
-    <div class="left">
-      <a href="https://kaobeimao.github.io">
-        <img class="avatar" src="https://kaobeimao.github.io/images/avatar.png?v=1586854467323" alt="" width="32px" height="32px">
-      </a>
-      <a href="https://kaobeimao.github.io">
-        <h1 class="site-title">kaobeimao</h1>
-      </a>
-    </div>
-    <div class="right">
-      <transition name="fade">
-        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
-      </transition>
+    <div class="nav py-3 md:py-8 fixed w-full z-10 bg-gray-50 dark:bg-gray-700 transition-all duration-300" :class="{ 'scroll': scrolled }">
+  <div class="flex justify-end px-4">
+    <div class="w-8 h-8 flex justify-center items-center rounded-full md:hidden" @click="showMenu = !showMenu">
+      <i class="ri-close-line" v-show="showMenu"></i>
+      <i class="ri-menu-3-line" v-show="!showMenu"></i>
     </div>
   </div>
+  <nav class="max-w-4xl w-full mx-auto text-center flex flex-col md:flex-row justify-center md:block" :class="`${ showMenu ? 'block' : 'hidden' }`">
+    
+      <a href="/" target="" class="py-2 md:py-1 px-4 mx-4 inline-flex transition font-semibold rounded dark:hover:bg-gray-600 hover:bg-gray-200">
+        首页
+      </a>
+    
+      <a href="/archives" target="" class="py-2 md:py-1 px-4 mx-4 inline-flex transition font-semibold rounded dark:hover:bg-gray-600 hover:bg-gray-200">
+        归档
+      </a>
+    
+      <a href="/tags" target="" class="py-2 md:py-1 px-4 mx-4 inline-flex transition font-semibold rounded dark:hover:bg-gray-600 hover:bg-gray-200">
+        标签
+      </a>
+    
+      <a href="/post/about" target="" class="py-2 md:py-1 px-4 mx-4 inline-flex transition font-semibold rounded dark:hover:bg-gray-600 hover:bg-gray-200">
+        关于
+      </a>
+    
+    <a href="https://kaobeimao.github.io/atom.xml" target="_blank" class="py-2 md:py-1 px-4 mx-4 inline-flex transition font-semibold rounded dark:hover:bg-gray-600 hover:bg-gray-200">
+      RSS
+    </a>
+  </nav>
 </div>
 
-<transition name="fade">
-  <div class="menu-container" style="display: none;" v-show="menuVisible">
-    <div class="menu-list">
+    <div class="max-w-4xl w-full mx-auto ">
       
-        
-          <a href="/" class="menu purple-link">
-            首页
-          </a>
-        
-      
-        
-          <a href="/archives" class="menu purple-link">
-            归档
-          </a>
-        
-      
-        
-          <a href="/tags" class="menu purple-link">
-            标签
-          </a>
-        
-      
-        
-          <a href="/post/about" class="menu purple-link">
-            关于
-          </a>
-        
-      
+        <header class="flex py-16 md:py-32 mt-12 flex-col md:flex-row px-4 md:px-0 animated fadeIn">
+  <div class="flex-1 order-2 md:order-1 md:pr-16">
+    <div class="text-4xl font-bold text-center md:text-left">
+      kaobeimao
     </div>
-  </div>
-</transition>
-
-
-      <div class="content-container">
-        
-        
-<section class="post-item">
-    <div class="content">
-      <a href="https://kaobeimao.github.io/post/QRqEP6nER/">
-        <h2 class="post-title">ts接口</h2>
-      </a>
-      <div class="post-abstract">
-        
-      </div>
-      <div class="post-info">
-        <span><i class="icon icon-calendar-outline"></i> 2020-04-14</span>
-        
-          <span>
-            <i class="icon icon-pricetags-outline"></i>
-            
-              <a href="https://kaobeimao.github.io/tag/bkYElpkmC/">
-                ts
-                
-              </a>
-            
-          </span>
-        
-      </div>
+    <div class="text-xl text-gray-500 mt-4 text-center md:text-left">
+      舒服嗷铁汁
     </div>
     
-  </section>
-
-<section class="post-item">
-    <div class="content">
-      <a href="https://kaobeimao.github.io/post/ITHA19twK/">
-        <h2 class="post-title">docker安装mysql+phpmydamin</h2>
-      </a>
-      <div class="post-abstract">
-        
-      </div>
-      <div class="post-info">
-        <span><i class="icon icon-calendar-outline"></i> 2019-11-29</span>
-        
-      </div>
-    </div>
-    
-  </section>
-
-<section class="post-item">
-    <div class="content">
-      <a href="https://kaobeimao.github.io/post/eEFgrP9g4/">
-        <h2 class="post-title">throw</h2>
-      </a>
-      <div class="post-abstract">
-        
-      </div>
-      <div class="post-info">
-        <span><i class="icon icon-calendar-outline"></i> 2019-10-28</span>
-        
-          <span>
-            <i class="icon icon-pricetags-outline"></i>
-            
-              <a href="https://kaobeimao.github.io/tag/R6i0e5qEG/">
-                js
-                
-              </a>
-            
-          </span>
-        
-      </div>
-    </div>
-    
-  </section>
-
-<section class="post-item">
-    <div class="content">
-      <a href="https://kaobeimao.github.io/post/1pcYfEj_2/">
-        <h2 class="post-title">uni-app自定义TabBar</h2>
-      </a>
-      <div class="post-abstract">
-        
-      </div>
-      <div class="post-info">
-        <span><i class="icon icon-calendar-outline"></i> 2019-10-27</span>
-        
-          <span>
-            <i class="icon icon-pricetags-outline"></i>
-            
-              <a href="https://kaobeimao.github.io/tag/e72YuKUCI/">
-                vue
-                
-                  ，
-                
-              </a>
-            
-              <a href="https://kaobeimao.github.io/tag/1pfcsHdmN/">
-                小程序
-                
-                  ，
-                
-              </a>
-            
-              <a href="https://kaobeimao.github.io/tag/n0e37Om65/">
-                note
-                
-              </a>
-            
-          </span>
-        
-      </div>
-    </div>
-    
-  </section>
-
-<section class="post-item">
-    <div class="content">
-      <a href="https://kaobeimao.github.io/post/tm-55fOUc/">
-        <h2 class="post-title">Electron+ElementUI输入框键盘回车事件白屏</h2>
-      </a>
-      <div class="post-abstract">
-        
-      </div>
-      <div class="post-info">
-        <span><i class="icon icon-calendar-outline"></i> 2019-10-24</span>
-        
-          <span>
-            <i class="icon icon-pricetags-outline"></i>
-            
-              <a href="https://kaobeimao.github.io/tag/n0e37Om65/">
-                note
-                
-              </a>
-            
-          </span>
-        
-      </div>
-    </div>
-    
-  </section>
-
-<section class="post-item">
-    <div class="content">
-      <a href="https://kaobeimao.github.io/post/uJ61PmWre/">
-        <h2 class="post-title">JS基础知识点整理</h2>
-      </a>
-      <div class="post-abstract">
-        
-      </div>
-      <div class="post-info">
-        <span><i class="icon icon-calendar-outline"></i> 2019-10-10</span>
-        
-          <span>
-            <i class="icon icon-pricetags-outline"></i>
-            
-              <a href="https://kaobeimao.github.io/tag/n0e37Om65/">
-                note
-                
-                  ，
-                
-              </a>
-            
-              <a href="https://kaobeimao.github.io/tag/R6i0e5qEG/">
-                js
-                
-              </a>
-            
-          </span>
-        
-      </div>
-    </div>
-    
-  </section>
-
-<section class="post-item">
-    <div class="content">
-      <a href="https://kaobeimao.github.io/post/P-LlCRZyP/">
-        <h2 class="post-title">Boolean Skill</h2>
-      </a>
-      <div class="post-abstract">
-        
-      </div>
-      <div class="post-info">
-        <span><i class="icon icon-calendar-outline"></i> 2019-10-07</span>
-        
-          <span>
-            <i class="icon icon-pricetags-outline"></i>
-            
-              <a href="https://kaobeimao.github.io/tag/n0e37Om65/">
-                note
-                
-                  ，
-                
-              </a>
-            
-              <a href="https://kaobeimao.github.io/tag/R6i0e5qEG/">
-                js
-                
-              </a>
-            
-          </span>
-        
-      </div>
-    </div>
-    
-  </section>
-
-<section class="post-item">
-    <div class="content">
-      <a href="https://kaobeimao.github.io/post/eSPILDxPr/">
-        <h2 class="post-title">扩展运算符</h2>
-      </a>
-      <div class="post-abstract">
-        
-      </div>
-      <div class="post-info">
-        <span><i class="icon icon-calendar-outline"></i> 2019-10-07</span>
-        
-          <span>
-            <i class="icon icon-pricetags-outline"></i>
-            
-              <a href="https://kaobeimao.github.io/tag/n0e37Om65/">
-                note
-                
-                  ，
-                
-              </a>
-            
-              <a href="https://kaobeimao.github.io/tag/R6i0e5qEG/">
-                js
-                
-              </a>
-            
-          </span>
-        
-      </div>
-    </div>
-    
-  </section>
-
-<section class="post-item">
-    <div class="content">
-      <a href="https://kaobeimao.github.io/post/cM6N64RQ8/">
-        <h2 class="post-title">axios封装</h2>
-      </a>
-      <div class="post-abstract">
-        
-      </div>
-      <div class="post-info">
-        <span><i class="icon icon-calendar-outline"></i> 2019-10-07</span>
-        
-          <span>
-            <i class="icon icon-pricetags-outline"></i>
-            
-              <a href="https://kaobeimao.github.io/tag/cxPYXAlaG/">
-                util
-                
-                  ，
-                
-              </a>
-            
-              <a href="https://kaobeimao.github.io/tag/n0e37Om65/">
-                note
-                
-              </a>
-            
-          </span>
-        
-      </div>
-    </div>
-    
-  </section>
-
-<section class="post-item">
-    <div class="content">
-      <a href="https://kaobeimao.github.io/post/han-shu-sheng-ming-ji-biao-da-shi/">
-        <h2 class="post-title">函数声明及表达式</h2>
-      </a>
-      <div class="post-abstract">
-        
-      </div>
-      <div class="post-info">
-        <span><i class="icon icon-calendar-outline"></i> 2019-10-07</span>
-        
-          <span>
-            <i class="icon icon-pricetags-outline"></i>
-            
-              <a href="https://kaobeimao.github.io/tag/R6i0e5qEG/">
-                js
-                
-              </a>
-            
-          </span>
-        
-      </div>
-    </div>
-    
-  </section>
-
-
-<div class="pagination-container">
-  
-  
-    <a href="https://kaobeimao.github.io/page/2" class="next">下一页 <i class="icon-arrow-ios-forward-outline"></i></a>
-  
-</div>
-
-
-      </div>
-
-      <div class="site-footer">
-  <div class="slogan">舒服嗷铁汁</div>
-  <div class="social-container">
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
     
   </div>
-  note | <a class="rss" href="https://kaobeimao.github.io/atom.xml" target="_blank">RSS</a>
-</div>
+  <div class="md:mx-8 flex-shrink-0 self-start rounded-full border-4 border-dotted border-transparent hover:border-yellow-50 p-2 w-32 h-32 order-1 md:order-2 mx-auto s3-dotted">
+    <img class="rounded-full object-cover" src="https://kaobeimao.github.io/images/avatar.png?v=1586855366866" alt="kaobeimao" width="100%" height="100%">
+  </div>
+</header>
+      
 
+      <div class="shadow-box bg-white dark:bg-gray-600 border-gray-300 rounded-none md:rounded-lg -mx-1 md:mx-0 md:px-0">
+        
+  <div class="p-8 border-b border-gray-200 dark:border-gray-700 flex relative overflow-hidden flex-col md:flex-row animated fadeIn">
+    
+    <div class="flex-1 order-2 md:order-1">
+      <h2 class="text-2xl font-semibold mb-4">
+        <a href="https://kaobeimao.github.io/post/QRqEP6nER/" class="text-gray-700 dark:text-gray-200 border-b-2 border-dotted border-gray-200 dark:border-gray-400 dark:hover:border-gray-200 hover:border-gray-600 transition-all duration-100">
+          ts接口
+        </a>
+      </h2>
+      <div class="mb-4 text-xs text-gray-500">2020-04-14</div>
+      <div class="mb-4 text-gray-500 dark:text-gray-300">
+        接口的定义
+TypeScript 中的接口是一个非常灵活的概念，除了可用于对类的一部分行为进行抽象以外，也常用于对「对象的形状（Shape）」进行描述。 hehe
+// 定义接口
+interface Person {
+    readonl...
+      </div>
+      <a href="https://kaobeimao.github.io/post/QRqEP6nER/" class="btn">
+        Read more
+      </a>
+    </div>
+    
+  </div>
+
+  <div class="p-8 border-b border-gray-200 dark:border-gray-700 flex relative overflow-hidden flex-col md:flex-row animated fadeIn">
+    
+    <div class="flex-1 order-2 md:order-1">
+      <h2 class="text-2xl font-semibold mb-4">
+        <a href="https://kaobeimao.github.io/post/ITHA19twK/" class="text-gray-700 dark:text-gray-200 border-b-2 border-dotted border-gray-200 dark:border-gray-400 dark:hover:border-gray-200 hover:border-gray-600 transition-all duration-100">
+          docker安装mysql+phpmydamin
+        </a>
+      </h2>
+      <div class="mb-4 text-xs text-gray-500">2019-11-29</div>
+      <div class="mb-4 text-gray-500 dark:text-gray-300">
+        # docker 中下载 mysql
+docker pull mysql
+
+#启动
+docker run --name mysql-kbm -p 3306:3306 -e MYSQL_ROOT_PASSWORD=7777 -d mysql
+...
+      </div>
+      <a href="https://kaobeimao.github.io/post/ITHA19twK/" class="btn">
+        Read more
+      </a>
+    </div>
+    
+  </div>
+
+  <div class="p-8 border-b border-gray-200 dark:border-gray-700 flex relative overflow-hidden flex-col md:flex-row animated fadeIn">
+    
+    <div class="flex-1 order-2 md:order-1">
+      <h2 class="text-2xl font-semibold mb-4">
+        <a href="https://kaobeimao.github.io/post/eEFgrP9g4/" class="text-gray-700 dark:text-gray-200 border-b-2 border-dotted border-gray-200 dark:border-gray-400 dark:hover:border-gray-200 hover:border-gray-600 transition-all duration-100">
+          throw
+        </a>
+      </h2>
+      <div class="mb-4 text-xs text-gray-500">2019-10-28</div>
+      <div class="mb-4 text-gray-500 dark:text-gray-300">
+        
+throw语句用来抛出一个用户自定义的异常。当前函数的执行将被停止（throw之后的语句将不会执行），并且控制将被传递到调用堆栈中的第一个catch块。如果调用者函数中没有catch块，程序将会终止。
+
+示例
+throw &quot;Er...
+      </div>
+      <a href="https://kaobeimao.github.io/post/eEFgrP9g4/" class="btn">
+        Read more
+      </a>
+    </div>
+    
+  </div>
+
+  <div class="p-8 border-b border-gray-200 dark:border-gray-700 flex relative overflow-hidden flex-col md:flex-row animated fadeIn">
+    
+    <div class="flex-1 order-2 md:order-1">
+      <h2 class="text-2xl font-semibold mb-4">
+        <a href="https://kaobeimao.github.io/post/1pcYfEj_2/" class="text-gray-700 dark:text-gray-200 border-b-2 border-dotted border-gray-200 dark:border-gray-400 dark:hover:border-gray-200 hover:border-gray-600 transition-all duration-100">
+          uni-app自定义TabBar
+        </a>
+      </h2>
+      <div class="mb-4 text-xs text-gray-500">2019-10-27</div>
+      <div class="mb-4 text-gray-500 dark:text-gray-300">
+        Vuex管理状态
+// state.js
+export default {
+    currentTabBarIndex: 0,
+    myTabBar: [],
+    operatorTabBar: [
+        {
+     ...
+      </div>
+      <a href="https://kaobeimao.github.io/post/1pcYfEj_2/" class="btn">
+        Read more
+      </a>
+    </div>
+    
+  </div>
+
+  <div class="p-8 border-b border-gray-200 dark:border-gray-700 flex relative overflow-hidden flex-col md:flex-row animated fadeIn">
+    
+    <div class="flex-1 order-2 md:order-1">
+      <h2 class="text-2xl font-semibold mb-4">
+        <a href="https://kaobeimao.github.io/post/tm-55fOUc/" class="text-gray-700 dark:text-gray-200 border-b-2 border-dotted border-gray-200 dark:border-gray-400 dark:hover:border-gray-200 hover:border-gray-600 transition-all duration-100">
+          Electron+ElementUI输入框键盘回车事件白屏
+        </a>
+      </h2>
+      <div class="mb-4 text-xs text-gray-500">2019-10-24</div>
+      <div class="mb-4 text-gray-500 dark:text-gray-300">
+        
+When there is only one single-line text input field in a form, the user agent should accept Enter in that field as a re...
+      </div>
+      <a href="https://kaobeimao.github.io/post/tm-55fOUc/" class="btn">
+        Read more
+      </a>
+    </div>
+    
+  </div>
+
+  <div class="p-8 border-b border-gray-200 dark:border-gray-700 flex relative overflow-hidden flex-col md:flex-row animated fadeIn">
+    
+    <div class="flex-1 order-2 md:order-1">
+      <h2 class="text-2xl font-semibold mb-4">
+        <a href="https://kaobeimao.github.io/post/uJ61PmWre/" class="text-gray-700 dark:text-gray-200 border-b-2 border-dotted border-gray-200 dark:border-gray-400 dark:hover:border-gray-200 hover:border-gray-600 transition-all duration-100">
+          JS基础知识点整理
+        </a>
+      </h2>
+      <div class="mb-4 text-xs text-gray-500">2019-10-10</div>
+      <div class="mb-4 text-gray-500 dark:text-gray-300">
+        内置类型
+
+JS 中分为七种内置类型，七种内置类型又分为两大类型：基本类型和对象（Object）
+
+原始（Primitive）类型 | 基本类型
+6 种原始值，分别是：
+
+boolean
+null
+undefined
+number
+stri...
+      </div>
+      <a href="https://kaobeimao.github.io/post/uJ61PmWre/" class="btn">
+        Read more
+      </a>
+    </div>
+    
+  </div>
+
+  <div class="p-8 border-b border-gray-200 dark:border-gray-700 flex relative overflow-hidden flex-col md:flex-row animated fadeIn">
+    
+    <div class="flex-1 order-2 md:order-1">
+      <h2 class="text-2xl font-semibold mb-4">
+        <a href="https://kaobeimao.github.io/post/P-LlCRZyP/" class="text-gray-700 dark:text-gray-200 border-b-2 border-dotted border-gray-200 dark:border-gray-400 dark:hover:border-gray-200 hover:border-gray-600 transition-all duration-100">
+          Boolean Skill
+        </a>
+      </h2>
+      <div class="mb-4 text-xs text-gray-500">2019-10-07</div>
+      <div class="mb-4 text-gray-500 dark:text-gray-300">
+        switch/case使用区间
+const age = 26;
+switch (true) {
+    case isNaN(age):
+        console.log(&quot;not a number&quot;);
+    ...
+      </div>
+      <a href="https://kaobeimao.github.io/post/P-LlCRZyP/" class="btn">
+        Read more
+      </a>
+    </div>
+    
+  </div>
+
+  <div class="p-8 border-b border-gray-200 dark:border-gray-700 flex relative overflow-hidden flex-col md:flex-row animated fadeIn">
+    
+    <div class="flex-1 order-2 md:order-1">
+      <h2 class="text-2xl font-semibold mb-4">
+        <a href="https://kaobeimao.github.io/post/eSPILDxPr/" class="text-gray-700 dark:text-gray-200 border-b-2 border-dotted border-gray-200 dark:border-gray-400 dark:hover:border-gray-200 hover:border-gray-600 transition-all duration-100">
+          扩展运算符
+        </a>
+      </h2>
+      <div class="mb-4 text-xs text-gray-500">2019-10-07</div>
+      <div class="mb-4 text-gray-500 dark:text-gray-300">
+        
+展开语法(Spread syntax), 可以在函数调用/数组构造时, 将数组表达式或者string在语法层面展开；还可以在构造字面量对象时, 将对象表达式按key-value的方式展开。(字面量一般指 [1, 2, 3] 或者 {nam...
+      </div>
+      <a href="https://kaobeimao.github.io/post/eSPILDxPr/" class="btn">
+        Read more
+      </a>
+    </div>
+    
+  </div>
+
+  <div class="p-8 border-b border-gray-200 dark:border-gray-700 flex relative overflow-hidden flex-col md:flex-row animated fadeIn">
+    
+    <div class="flex-1 order-2 md:order-1">
+      <h2 class="text-2xl font-semibold mb-4">
+        <a href="https://kaobeimao.github.io/post/cM6N64RQ8/" class="text-gray-700 dark:text-gray-200 border-b-2 border-dotted border-gray-200 dark:border-gray-400 dark:hover:border-gray-200 hover:border-gray-600 transition-all duration-100">
+          axios封装
+        </a>
+      </h2>
+      <div class="mb-4 text-xs text-gray-500">2019-10-07</div>
+      <div class="mb-4 text-gray-500 dark:text-gray-300">
+        /**
+ * axios封装
+ * 请求拦截、响应拦截、错误统一处理
+ */
+import axios from 'axios'
+import router from '../../router'
+import store from '.....
+      </div>
+      <a href="https://kaobeimao.github.io/post/cM6N64RQ8/" class="btn">
+        Read more
+      </a>
+    </div>
+    
+  </div>
+
+  <div class="p-8 border-b border-gray-200 dark:border-gray-700 flex relative overflow-hidden flex-col md:flex-row animated fadeIn">
+    
+    <div class="flex-1 order-2 md:order-1">
+      <h2 class="text-2xl font-semibold mb-4">
+        <a href="https://kaobeimao.github.io/post/han-shu-sheng-ming-ji-biao-da-shi/" class="text-gray-700 dark:text-gray-200 border-b-2 border-dotted border-gray-200 dark:border-gray-400 dark:hover:border-gray-200 hover:border-gray-600 transition-all duration-100">
+          函数声明及表达式
+        </a>
+      </h2>
+      <div class="mb-4 text-xs text-gray-500">2019-10-07</div>
+      <div class="mb-4 text-gray-500 dark:text-gray-300">
+        函数声明
+function add() {}
+
+函数表达式
+const add = function() {}
+or
+const add = () =&gt; {}
+
+区别
+foo(); // hello
+function foo() {
+...
+      </div>
+      <a href="https://kaobeimao.github.io/post/han-shu-sheng-ming-ji-biao-da-shi/" class="btn">
+        Read more
+      </a>
+    </div>
+    
+  </div>
+  
+      </div>
+
+      
+  <div class="my-4 flex justify-between px-4 md:px-0">
+    
+    
+      <a href="https://kaobeimao.github.io/page/2" class="btn btn-white">
+        下一页
+        <i class="ri-arrow-right-line ml-4"></i>
+      </a>
+    
+  </div>
+
+      <footer class="py-12 text-center px-4 md:px-0" v-pre>
+  note
+</footer>
 
     </div>
-    <script type="application/javascript">
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://kaobeimao.github.io/media/scripts/main.js"></script>
+</body>
 
-hljs.initHighlightingOnLoad()
-
-var app = new Vue({
-  el: '#app',
-  data: {
-    menuVisible: false,
-  },
-})
-
-</script>
-
-
-
-
-  </body>
 </html>

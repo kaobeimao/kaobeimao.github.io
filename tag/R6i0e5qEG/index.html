@@ -1,364 +1,264 @@
-
-<!DOCTYPE html>
-<html>
-  <head>
-    
-<meta charset="utf-8" >
-
-<title>js | kaobeimao</title>
-<meta name="description" content="舒服嗷铁汁">
-
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
-
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="https://kaobeimao.github.io/favicon.ico?v=1586854467323">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>kaobeimao</title>
+<link rel="shortcut icon" href="https://kaobeimao.github.io/favicon.ico">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css">
+<link rel="stylesheet" href="https://kaobeimao.github.io/media/css/tailwind.css">
 <link rel="stylesheet" href="https://kaobeimao.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="kaobeimao - Atom Feed" href="https://kaobeimao.github.io/atom.xml">
 
+    
 
+  <meta name="description" content="舒服嗷铁汁" />
+</head>
+<body>
+  <div class="antialiased flex flex-col min-h-screen" id="app">
 
-<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
-
-
-
-  </head>
-  <body>
-    <div id="app" class="main">
-      <div class="site-header-container">
-  <div class="site-header">
-    <div class="left">
-      <a href="https://kaobeimao.github.io">
-        <img class="avatar" src="https://kaobeimao.github.io/images/avatar.png?v=1586854467323" alt="" width="32px" height="32px">
-      </a>
-      <a href="https://kaobeimao.github.io">
-        <h1 class="site-title">kaobeimao</h1>
-      </a>
-    </div>
-    <div class="right">
-      <transition name="fade">
-        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
-      </transition>
+    <div class="nav py-3 md:py-8 fixed w-full z-10 bg-gray-50 dark:bg-gray-700 transition-all duration-300" :class="{ 'scroll': scrolled }">
+  <div class="flex justify-end px-4">
+    <div class="w-8 h-8 flex justify-center items-center rounded-full md:hidden" @click="showMenu = !showMenu">
+      <i class="ri-close-line" v-show="showMenu"></i>
+      <i class="ri-menu-3-line" v-show="!showMenu"></i>
     </div>
   </div>
+  <nav class="max-w-4xl w-full mx-auto text-center flex flex-col md:flex-row justify-center md:block" :class="`${ showMenu ? 'block' : 'hidden' }`">
+    
+      <a href="/" target="" class="py-2 md:py-1 px-4 mx-4 inline-flex transition font-semibold rounded dark:hover:bg-gray-600 hover:bg-gray-200">
+        首页
+      </a>
+    
+      <a href="/archives" target="" class="py-2 md:py-1 px-4 mx-4 inline-flex transition font-semibold rounded dark:hover:bg-gray-600 hover:bg-gray-200">
+        归档
+      </a>
+    
+      <a href="/tags" target="" class="py-2 md:py-1 px-4 mx-4 inline-flex transition font-semibold rounded dark:hover:bg-gray-600 hover:bg-gray-200">
+        标签
+      </a>
+    
+      <a href="/post/about" target="" class="py-2 md:py-1 px-4 mx-4 inline-flex transition font-semibold rounded dark:hover:bg-gray-600 hover:bg-gray-200">
+        关于
+      </a>
+    
+    <a href="https://kaobeimao.github.io/atom.xml" target="_blank" class="py-2 md:py-1 px-4 mx-4 inline-flex transition font-semibold rounded dark:hover:bg-gray-600 hover:bg-gray-200">
+      RSS
+    </a>
+  </nav>
 </div>
 
-<transition name="fade">
-  <div class="menu-container" style="display: none;" v-show="menuVisible">
-    <div class="menu-list">
-      
+    <div class="max-w-4xl w-full mx-auto pt-32">
+      <h1 class="text-2xl font-bold pb-8 flex justify-center items-center">
+        <i class="ri-hashtag"></i>
+        js
+      </h1>
+      <div class="shadow-box bg-white dark:bg-gray-600 border-gray-300 rounded-none md:rounded-lg -mx-1 md:mx-0 md:px-0">
         
-          <a href="/" class="menu purple-link">
-            首页
-          </a>
+  <div class="p-8 border-b border-gray-200 dark:border-gray-700 flex relative overflow-hidden flex-col md:flex-row animated fadeIn">
+    
+    <div class="flex-1 order-2 md:order-1">
+      <h2 class="text-2xl font-semibold mb-4">
+        <a href="https://kaobeimao.github.io/post/eEFgrP9g4/" class="text-gray-700 dark:text-gray-200 border-b-2 border-dotted border-gray-200 dark:border-gray-400 dark:hover:border-gray-200 hover:border-gray-600 transition-all duration-100">
+          throw
+        </a>
+      </h2>
+      <div class="mb-4 text-xs text-gray-500">2019-10-28</div>
+      <div class="mb-4 text-gray-500 dark:text-gray-300">
         
-      
-        
-          <a href="/archives" class="menu purple-link">
-            归档
-          </a>
-        
-      
-        
-          <a href="/tags" class="menu purple-link">
-            标签
-          </a>
-        
-      
-        
-          <a href="/post/about" class="menu purple-link">
-            关于
-          </a>
-        
-      
+throw语句用来抛出一个用户自定义的异常。当前函数的执行将被停止（throw之后的语句将不会执行），并且控制将被传递到调用堆栈中的第一个catch块。如果调用者函数中没有catch块，程序将会终止。
+
+示例
+throw &quot;Er...
+      </div>
+      <a href="https://kaobeimao.github.io/post/eEFgrP9g4/" class="btn">
+        Read more
+      </a>
     </div>
+    
   </div>
-</transition>
 
+  <div class="p-8 border-b border-gray-200 dark:border-gray-700 flex relative overflow-hidden flex-col md:flex-row animated fadeIn">
+    
+    <div class="flex-1 order-2 md:order-1">
+      <h2 class="text-2xl font-semibold mb-4">
+        <a href="https://kaobeimao.github.io/post/uJ61PmWre/" class="text-gray-700 dark:text-gray-200 border-b-2 border-dotted border-gray-200 dark:border-gray-400 dark:hover:border-gray-200 hover:border-gray-600 transition-all duration-100">
+          JS基础知识点整理
+        </a>
+      </h2>
+      <div class="mb-4 text-xs text-gray-500">2019-10-10</div>
+      <div class="mb-4 text-gray-500 dark:text-gray-300">
+        内置类型
 
-      <div class="content-container">
+JS 中分为七种内置类型，七种内置类型又分为两大类型：基本类型和对象（Object）
 
-        <div class="current-tag-container">
-          <h2 class="title">
-            <i class="icon icon-pricetags-outline"></i> js
-          </h2> 
-        </div>
+原始（Primitive）类型 | 基本类型
+6 种原始值，分别是：
 
-        
-<section class="post-item">
-    <div class="content">
-      <a href="https://kaobeimao.github.io/post/eEFgrP9g4/">
-        <h2 class="post-title">throw</h2>
+boolean
+null
+undefined
+number
+stri...
+      </div>
+      <a href="https://kaobeimao.github.io/post/uJ61PmWre/" class="btn">
+        Read more
       </a>
-      <div class="post-abstract">
-        
-      </div>
-      <div class="post-info">
-        <span><i class="icon icon-calendar-outline"></i> 2019-10-28</span>
-        
-          <span>
-            <i class="icon icon-pricetags-outline"></i>
-            
-              <a href="https://kaobeimao.github.io/tag/R6i0e5qEG/">
-                js
-                
-              </a>
-            
-          </span>
-        
-      </div>
     </div>
     
-  </section>
+  </div>
 
-<section class="post-item">
-    <div class="content">
-      <a href="https://kaobeimao.github.io/post/uJ61PmWre/">
-        <h2 class="post-title">JS基础知识点整理</h2>
+  <div class="p-8 border-b border-gray-200 dark:border-gray-700 flex relative overflow-hidden flex-col md:flex-row animated fadeIn">
+    
+    <div class="flex-1 order-2 md:order-1">
+      <h2 class="text-2xl font-semibold mb-4">
+        <a href="https://kaobeimao.github.io/post/P-LlCRZyP/" class="text-gray-700 dark:text-gray-200 border-b-2 border-dotted border-gray-200 dark:border-gray-400 dark:hover:border-gray-200 hover:border-gray-600 transition-all duration-100">
+          Boolean Skill
+        </a>
+      </h2>
+      <div class="mb-4 text-xs text-gray-500">2019-10-07</div>
+      <div class="mb-4 text-gray-500 dark:text-gray-300">
+        switch/case使用区间
+const age = 26;
+switch (true) {
+    case isNaN(age):
+        console.log(&quot;not a number&quot;);
+    ...
+      </div>
+      <a href="https://kaobeimao.github.io/post/P-LlCRZyP/" class="btn">
+        Read more
       </a>
-      <div class="post-abstract">
-        
-      </div>
-      <div class="post-info">
-        <span><i class="icon icon-calendar-outline"></i> 2019-10-10</span>
-        
-          <span>
-            <i class="icon icon-pricetags-outline"></i>
-            
-              <a href="https://kaobeimao.github.io/tag/n0e37Om65/">
-                note
-                
-                  ，
-                
-              </a>
-            
-              <a href="https://kaobeimao.github.io/tag/R6i0e5qEG/">
-                js
-                
-              </a>
-            
-          </span>
-        
-      </div>
     </div>
     
-  </section>
+  </div>
 
-<section class="post-item">
-    <div class="content">
-      <a href="https://kaobeimao.github.io/post/P-LlCRZyP/">
-        <h2 class="post-title">Boolean Skill</h2>
+  <div class="p-8 border-b border-gray-200 dark:border-gray-700 flex relative overflow-hidden flex-col md:flex-row animated fadeIn">
+    
+    <div class="flex-1 order-2 md:order-1">
+      <h2 class="text-2xl font-semibold mb-4">
+        <a href="https://kaobeimao.github.io/post/eSPILDxPr/" class="text-gray-700 dark:text-gray-200 border-b-2 border-dotted border-gray-200 dark:border-gray-400 dark:hover:border-gray-200 hover:border-gray-600 transition-all duration-100">
+          扩展运算符
+        </a>
+      </h2>
+      <div class="mb-4 text-xs text-gray-500">2019-10-07</div>
+      <div class="mb-4 text-gray-500 dark:text-gray-300">
+        
+展开语法(Spread syntax), 可以在函数调用/数组构造时, 将数组表达式或者string在语法层面展开；还可以在构造字面量对象时, 将对象表达式按key-value的方式展开。(字面量一般指 [1, 2, 3] 或者 {nam...
+      </div>
+      <a href="https://kaobeimao.github.io/post/eSPILDxPr/" class="btn">
+        Read more
       </a>
-      <div class="post-abstract">
-        
-      </div>
-      <div class="post-info">
-        <span><i class="icon icon-calendar-outline"></i> 2019-10-07</span>
-        
-          <span>
-            <i class="icon icon-pricetags-outline"></i>
-            
-              <a href="https://kaobeimao.github.io/tag/n0e37Om65/">
-                note
-                
-                  ，
-                
-              </a>
-            
-              <a href="https://kaobeimao.github.io/tag/R6i0e5qEG/">
-                js
-                
-              </a>
-            
-          </span>
-        
-      </div>
     </div>
     
-  </section>
+  </div>
 
-<section class="post-item">
-    <div class="content">
-      <a href="https://kaobeimao.github.io/post/eSPILDxPr/">
-        <h2 class="post-title">扩展运算符</h2>
+  <div class="p-8 border-b border-gray-200 dark:border-gray-700 flex relative overflow-hidden flex-col md:flex-row animated fadeIn">
+    
+    <div class="flex-1 order-2 md:order-1">
+      <h2 class="text-2xl font-semibold mb-4">
+        <a href="https://kaobeimao.github.io/post/han-shu-sheng-ming-ji-biao-da-shi/" class="text-gray-700 dark:text-gray-200 border-b-2 border-dotted border-gray-200 dark:border-gray-400 dark:hover:border-gray-200 hover:border-gray-600 transition-all duration-100">
+          函数声明及表达式
+        </a>
+      </h2>
+      <div class="mb-4 text-xs text-gray-500">2019-10-07</div>
+      <div class="mb-4 text-gray-500 dark:text-gray-300">
+        函数声明
+function add() {}
+
+函数表达式
+const add = function() {}
+or
+const add = () =&gt; {}
+
+区别
+foo(); // hello
+function foo() {
+...
+      </div>
+      <a href="https://kaobeimao.github.io/post/han-shu-sheng-ming-ji-biao-da-shi/" class="btn">
+        Read more
       </a>
-      <div class="post-abstract">
-        
-      </div>
-      <div class="post-info">
-        <span><i class="icon icon-calendar-outline"></i> 2019-10-07</span>
-        
-          <span>
-            <i class="icon icon-pricetags-outline"></i>
-            
-              <a href="https://kaobeimao.github.io/tag/n0e37Om65/">
-                note
-                
-                  ，
-                
-              </a>
-            
-              <a href="https://kaobeimao.github.io/tag/R6i0e5qEG/">
-                js
-                
-              </a>
-            
-          </span>
-        
-      </div>
     </div>
     
-  </section>
+  </div>
 
-<section class="post-item">
-    <div class="content">
-      <a href="https://kaobeimao.github.io/post/han-shu-sheng-ming-ji-biao-da-shi/">
-        <h2 class="post-title">函数声明及表达式</h2>
+  <div class="p-8 border-b border-gray-200 dark:border-gray-700 flex relative overflow-hidden flex-col md:flex-row animated fadeIn">
+    
+    <div class="flex-1 order-2 md:order-1">
+      <h2 class="text-2xl font-semibold mb-4">
+        <a href="https://kaobeimao.github.io/post/fang-dou-andjie-liu/" class="text-gray-700 dark:text-gray-200 border-b-2 border-dotted border-gray-200 dark:border-gray-400 dark:hover:border-gray-200 hover:border-gray-600 transition-all duration-100">
+          防抖&amp;节流
+        </a>
+      </h2>
+      <div class="mb-4 text-xs text-gray-500">2019-09-29</div>
+      <div class="mb-4 text-gray-500 dark:text-gray-300">
+        /**
+ * 防抖函数，返回函数连续调用时，空闲时间必须大于或等于 wait，func 才会执行
+ * @param  {function} func        回调函数
+ * @param  {number}   wait      ...
+      </div>
+      <a href="https://kaobeimao.github.io/post/fang-dou-andjie-liu/" class="btn">
+        Read more
       </a>
-      <div class="post-abstract">
-        
-      </div>
-      <div class="post-info">
-        <span><i class="icon icon-calendar-outline"></i> 2019-10-07</span>
-        
-          <span>
-            <i class="icon icon-pricetags-outline"></i>
-            
-              <a href="https://kaobeimao.github.io/tag/R6i0e5qEG/">
-                js
-                
-              </a>
-            
-          </span>
-        
-      </div>
     </div>
     
-  </section>
+  </div>
 
-<section class="post-item">
-    <div class="content">
-      <a href="https://kaobeimao.github.io/post/fang-dou-andjie-liu/">
-        <h2 class="post-title">防抖&amp;节流</h2>
+  <div class="p-8 border-b border-gray-200 dark:border-gray-700 flex relative overflow-hidden flex-col md:flex-row animated fadeIn">
+    
+    <div class="flex-1 order-2 md:order-1">
+      <h2 class="text-2xl font-semibold mb-4">
+        <a href="https://kaobeimao.github.io/post/liang-shu-zhi-he/" class="text-gray-700 dark:text-gray-200 border-b-2 border-dotted border-gray-200 dark:border-gray-400 dark:hover:border-gray-200 hover:border-gray-600 transition-all duration-100">
+          两数之和
+        </a>
+      </h2>
+      <div class="mb-4 text-xs text-gray-500">2019-09-28</div>
+      <div class="mb-4 text-gray-500 dark:text-gray-300">
+        给定一个整数数组 nums 和一个目标值 target，请你在该数组中找出和为目标值的那 两个 整数，并返回他们的数组下标。
+你可以假设每种输入只会对应一个答案。但是，你不能重复利用这个数组中同样的元素。
+示例
+给定 nums = [2, ...
+      </div>
+      <a href="https://kaobeimao.github.io/post/liang-shu-zhi-he/" class="btn">
+        Read more
       </a>
-      <div class="post-abstract">
-        
-      </div>
-      <div class="post-info">
-        <span><i class="icon icon-calendar-outline"></i> 2019-09-29</span>
-        
-          <span>
-            <i class="icon icon-pricetags-outline"></i>
-            
-              <a href="https://kaobeimao.github.io/tag/R6i0e5qEG/">
-                js
-                
-              </a>
-            
-          </span>
-        
-      </div>
     </div>
     
-  </section>
+  </div>
 
-<section class="post-item">
-    <div class="content">
-      <a href="https://kaobeimao.github.io/post/liang-shu-zhi-he/">
-        <h2 class="post-title">两数之和</h2>
+  <div class="p-8 border-b border-gray-200 dark:border-gray-700 flex relative overflow-hidden flex-col md:flex-row animated fadeIn">
+    
+    <div class="flex-1 order-2 md:order-1">
+      <h2 class="text-2xl font-semibold mb-4">
+        <a href="https://kaobeimao.github.io/post/test/" class="text-gray-700 dark:text-gray-200 border-b-2 border-dotted border-gray-200 dark:border-gray-400 dark:hover:border-gray-200 hover:border-gray-600 transition-all duration-100">
+          浮点数的精度问题
+        </a>
+      </h2>
+      <div class="mb-4 text-xs text-gray-500">2019-09-26</div>
+      <div class="mb-4 text-gray-500 dark:text-gray-300">
+        JS 采用 IEEE 754 双精度版本（64位）
+parseFloat((0.1 + 0.2).toFixed(10))
+
+
+      </div>
+      <a href="https://kaobeimao.github.io/post/test/" class="btn">
+        Read more
       </a>
-      <div class="post-abstract">
-        
-      </div>
-      <div class="post-info">
-        <span><i class="icon icon-calendar-outline"></i> 2019-09-28</span>
-        
-          <span>
-            <i class="icon icon-pricetags-outline"></i>
-            
-              <a href="https://kaobeimao.github.io/tag/R6i0e5qEG/">
-                js
-                
-              </a>
-            
-          </span>
-        
-      </div>
     </div>
     
-  </section>
-
-<section class="post-item">
-    <div class="content">
-      <a href="https://kaobeimao.github.io/post/test/">
-        <h2 class="post-title">浮点数的精度问题</h2>
-      </a>
-      <div class="post-abstract">
-        
-      </div>
-      <div class="post-info">
-        <span><i class="icon icon-calendar-outline"></i> 2019-09-26</span>
-        
-          <span>
-            <i class="icon icon-pricetags-outline"></i>
-            
-              <a href="https://kaobeimao.github.io/tag/R6i0e5qEG/">
-                js
-                
-              </a>
-            
-          </span>
-        
-      </div>
-    </div>
-    
-  </section>
-
-
-<div class="pagination-container">
+  </div>
   
-  
-</div>
-
-
       </div>
 
-      <div class="site-footer">
-  <div class="slogan">舒服嗷铁汁</div>
-  <div class="social-container">
-    
       
-    
-      
-    
-      
-    
-      
-    
-      
-    
-  </div>
-  note | <a class="rss" href="https://kaobeimao.github.io/atom.xml" target="_blank">RSS</a>
-</div>
-
+      <footer class="py-12 text-center px-4 md:px-0" v-pre>
+  note
+</footer>
 
     </div>
-    <script type="application/javascript">
-
-hljs.initHighlightingOnLoad()
-
-var app = new Vue({
-  el: '#app',
-  data: {
-    menuVisible: false,
-  },
-})
-
-</script>
-
-
-
-
-  </body>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://kaobeimao.github.io/media/scripts/main.js"></script>
+</body>
 </html>
