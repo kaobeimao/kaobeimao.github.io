@@ -1815,3 +1815,5 @@ Orginal Style from ethanschoonover.com/solarized (c) Jeremy Hull <sourdrums@gmai
           background: RGBA(139,149,159,0.14)!important;
         }
          
+      .gt-post-content pre code {overflow: auto;}
+    
