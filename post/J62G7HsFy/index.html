@@ -3,7 +3,7 @@
     <meta charset="utf-8"/>
 <meta name="description" content=""/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>浮点数的精度问题 | kaobeimao</title>
+<title>docker使用nginx部署静态网站 | kaobeimao</title>
 <link rel="shortcut icon" href="https://kaobeimao.github.io/favicon.ico?v=1589180695000">
 <link href="https://cdn.bootcss.com/font-awesome/5.11.2/css/all.css" rel="stylesheet">
 <link rel="stylesheet" href="https://kaobeimao.github.io/styles/main.css">
@@ -87,27 +87,41 @@
         <div class="post-detail gt-bg-theme-color-second">
             <article class="gt-post-content">
                 <h2 class="post-title">
-                    浮点数的精度问题
+                    docker使用nginx部署静态网站
                 </h2>
                 <div class="post-info">
                     <time class="post-time gt-c-content-color-first">
-                        · 2019-09-26 ·
+                        · 2020-05-11 ·
                     </time>
-                    
-                        <a href="https://kaobeimao.github.io/tag/R6i0e5qEG/" class="post-tags">
-                            # js
-                        </a>
                     
                 </div>
                 <div class="post-content">
-                    <p>JS 采用 IEEE 754 双精度版本（64位）</p>
-<pre><code class="language-js">parseFloat((0.1 + 0.2).toFixed(10))
+                    <pre><code class="language-shell">docker pull nginx
+
+docker run -d -p 8086:80 -v /home/app/dist:/app -v /home/config:/etc/nginx/conf.d --name demo-web nginx
+</code></pre>
+<p>nginx配置文件</p>
+<pre><code>server {
+    listen 80;
+    server_name localhost;
+    location / {
+        root /app;
+        index index.html index.htm;
+    }
+}
 </code></pre>
 
                 </div>
             </article>
         </div>
 
+        
+            <div class="next-post">
+                <div class="next gt-c-content-color-first">下一篇</div>
+                <a href="https://kaobeimao.github.io/post/QRqEP6nER/" class="post-title gt-a-link">
+                    ts接口
+                </a>
+            </div>
         
 
         
