@@ -4,7 +4,7 @@
 <meta name="description" content=""/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>docker使用nginx部署静态网站 | kaobeimao</title>
-<link rel="shortcut icon" href="https://kaobeimao.github.io/favicon.ico?v=1589180695000">
+<link rel="shortcut icon" href="https://kaobeimao.github.io/favicon.ico?v=1589535752438">
 <link href="https://cdn.bootcss.com/font-awesome/5.11.2/css/all.css" rel="stylesheet">
 <link rel="stylesheet" href="https://kaobeimao.github.io/styles/main.css">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
@@ -101,7 +101,8 @@
 docker run -d -p 8086:80 -v /home/app/dist:/app -v /home/config:/etc/nginx/conf.d --name demo-web nginx
 </code></pre>
 <p>nginx配置文件</p>
-<pre><code>server {
+<pre><code>// default.conf
+server {
     listen 80;
     server_name localhost;
     location / {
@@ -109,6 +110,11 @@ docker run -d -p 8086:80 -v /home/app/dist:/app -v /home/config:/etc/nginx/conf.
         index index.html index.htm;
     }
 }
+
+// gzip.conf
+gzip on;
+gzip_types text/plain text/css application/json application/x-javascript text/xml application/xml application/xml+rss text/javascript;
+gzip_comp_level 6;
 </code></pre>
 
                 </div>
