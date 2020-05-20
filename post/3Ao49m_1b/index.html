@@ -3,7 +3,7 @@
     <meta charset="utf-8"/>
 <meta name="description" content=""/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>vue | kaobeimao</title>
+<title>JS合并数组中连续相同元素并累加次数 | kaobeimao</title>
 <link rel="shortcut icon" href="https://kaobeimao.github.io/favicon.ico?v=1589988317350">
 <link href="https://cdn.bootcss.com/font-awesome/5.11.2/css/all.css" rel="stylesheet">
 <link rel="stylesheet" href="https://kaobeimao.github.io/styles/main.css">
@@ -30,11 +30,11 @@
 
 
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 </head>
 <body>
 <div class="main gt-bg-theme-color-first">
-    <div class="main-content">
-        <nav class="navbar navbar-expand-lg">
+    <nav class="navbar navbar-expand-lg">
     <div class="navbar-brand">
         <img class="user-avatar" src="/images/avatar.png" alt="头像">
         <div class="site-name gt-c-content-color-first">
@@ -83,53 +83,104 @@
         </div>
     </div>
 </nav>
-        <div class="current-tag-container">
-            <h2 class="title gt-c-content-color-first">
-                #vue
-            </h2>
-        </div>
-        <div class="post-list-container">
-    <div class="post-inner">
-        
-            <div class="post gt-bg-theme-color-second">
-                <div class="post-left">
-                    <div>
-                        
-                        <a href="https://kaobeimao.github.io/post/1pcYfEj_2">
-                            <span class="post-title gt-c-content-color-first">uni-app自定义TabBar</span>
+    <div class="post-container">
+        <div class="post-detail gt-bg-theme-color-second">
+            <article class="gt-post-content">
+                <h2 class="post-title">
+                    JS合并数组中连续相同元素并累加次数
+                </h2>
+                <div class="post-info">
+                    <time class="post-time gt-c-content-color-first">
+                        · 2020-05-20 ·
+                    </time>
+                    
+                        <a href="https://kaobeimao.github.io/tag/7wqXUYA9J" class="post-tags">
+                            # 算法
                         </a>
-                    </div>
-                    <div class="gt-post-content post-abstract gt-c-content-color-second">
-                        
-                    </div>
-                    <div class="post-info">
-                        <time class="post-time gt-c-content-color-first">
-                            发布于 · 2019-10-27 ·
-                        </time>
-                        
-                            <a href="https://kaobeimao.github.io/tag/e72YuKUCI" class="post-tag">
-                                # vue
-                            </a>
-                        
-                            <a href="https://kaobeimao.github.io/tag/1pfcsHdmN" class="post-tag">
-                                # 小程序
-                            </a>
-                        
-                            <a href="https://kaobeimao.github.io/tag/n0e37Om65" class="post-tag">
-                                # note
-                            </a>
-                        
-                    </div>
+                    
+                        <a href="https://kaobeimao.github.io/tag/R6i0e5qEG" class="post-tags">
+                            # js
+                        </a>
+                    
                 </div>
-                
+                <div class="post-content">
+                    <pre><code class="language-js">const originalData = [
+    { name: 'qqq' },
+    { name: 'www' },
+    { name: 'www' },
+    { name: 'www' },
+    { name: 'qqq' },
+]
+
+console.log(originalData)
+
+console.log(&quot;==========================================================&quot;)
+
+function handleOriginalData(originalData) {
+    let outputNameData = []
+    let outputData = []
+    for (let i = 0; i &lt; originalData.length; i++) {
+        const elementName = originalData[i].name
+        let isContinuous = false
+        if (i &gt; 0 &amp;&amp; elementName === originalData[i - 1].name) {
+            isContinuous = true
+        }
+        if (outputNameData.indexOf(elementName) === -1 || !isContinuous) {
+            outputData.push({
+                name: elementName,
+                size: 1,
+            })
+            outputNameData.push(elementName)
+        } else {
+            for (let j = outputData.length - 1; j &gt;= 0; j--) {
+                if (outputData[j].name !== elementName) {
+                    outputData[j + 1].size++
+                    break
+                }
+                if (j === 0) {
+                    outputData[j].size++
+                }
+            }
+            outputNameData.push(elementName)
+        }
+    }
+    return outputData
+}
+const outputData = handleOriginalData(originalData)
+console.log(outputData)
+
+console.log(&quot;==========================================================&quot;)
+
+function handleOutputData(outputData) {
+    let originalData = []
+    for (let i = 0; i &lt; outputData.length; i++) {
+        const element = outputData[i];
+        for (let j = 0; j &lt; element.size; j++) {
+            originalData.push({
+                name: element.name
+            })
+        }
+    }
+    return originalData
+}
+
+console.log(handleOutputData(outputData))
+</code></pre>
+
+                </div>
+            </article>
+        </div>
+
+        
+            <div class="next-post">
+                <div class="next gt-c-content-color-first">下一篇</div>
+                <a href="https://kaobeimao.github.io/post/J62G7HsFy" class="post-title gt-a-link">
+                    docker使用nginx部署静态网站
+                </a>
             </div>
         
-    </div>
-</div>
-        <div class="pagination-container">
-    
-    
-</div>
+
+        
 
         <div class="site-footer gt-c-content-color-first">
     <div class="slogan gt-c-content-color-first">舒服嗷铁汁</div>
@@ -160,6 +211,7 @@
 <script>
     hljs.initHighlightingOnLoad()
 </script>
+
 
     </div>
 </div>
