@@ -4,7 +4,7 @@
 <meta name="description" content=""/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>JS合并数组中连续相同元素并累加次数 | kaobeimao</title>
-<link rel="shortcut icon" href="https://kaobeimao.github.io/favicon.ico?v=1589988317350">
+<link rel="shortcut icon" href="https://kaobeimao.github.io/favicon.ico?v=1590055263099">
 <link href="https://cdn.bootcss.com/font-awesome/5.11.2/css/all.css" rel="stylesheet">
 <link rel="stylesheet" href="https://kaobeimao.github.io/styles/main.css">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
@@ -94,17 +94,18 @@
                         · 2020-05-20 ·
                     </time>
                     
-                        <a href="https://kaobeimao.github.io/tag/7wqXUYA9J" class="post-tags">
+                        <a href="https://kaobeimao.github.io/tag/7wqXUYA9J/" class="post-tags">
                             # 算法
                         </a>
                     
-                        <a href="https://kaobeimao.github.io/tag/R6i0e5qEG" class="post-tags">
+                        <a href="https://kaobeimao.github.io/tag/R6i0e5qEG/" class="post-tags">
                             # js
                         </a>
                     
                 </div>
                 <div class="post-content">
-                    <pre><code class="language-js">const originalData = [
+                    <pre><code class="language-js">// v1
+const originalData = [
     { name: 'qqq' },
     { name: 'www' },
     { name: 'www' },
@@ -166,6 +167,87 @@ function handleOutputData(outputData) {
 
 console.log(handleOutputData(outputData))
 </code></pre>
+<pre><code class="language-js">// v2
+const originalData = [{ name: 'w' }, { name: 'w' }, { name: '' }, { name: 'w' }, { name: 'w' }];
+
+console.log(originalData);
+
+console.log('==========================================================');
+
+function merge(origin) {
+    let result = [];
+
+    // 反向搜索可以合并的元素ß
+    let find = function (data, key) {
+        for (let i = data.length - 1; i &gt;= 0; i--) {
+            let item = data[i];
+            if (item.key === key) {
+                return i;
+            }
+        }
+    
+        return -1;
+    }
+
+    for (let i = 0; i &lt; origin.length; i++) {
+        const name = origin[i].name;
+        let findIndex = find(result, name);
+        // console.log(name, findIndex)
+        // 找到可以合并的
+        if (findIndex &gt;= 0) {
+            let mergeItem = result[findIndex];
+            // 坐标连续，可以合并
+            if (mergeItem.end === i) {
+                mergeItem.end = i + 1;
+                continue;
+            }
+        }
+        // 不可以合并的都作为独立元素添加
+        result.push({ key: name, begin: i, end: i + 1});
+        // console.log(result);
+    }
+
+    
+    return result.map((item, index) =&gt; { return {name: item.key, size: item.end - item.begin}; });
+}
+
+function simplifyResult(result) {
+    return result.map((item) =&gt; `${item.name}-${item.size}`).join(',')
+}
+
+// const outputData = handleOriginalData(originalData);
+const outputData = merge(originalData);
+console.log(outputData);
+
+console.log(simplifyResult(merge(originalData)));
+
+console.log('==========================================================');
+
+function handleOutputData(outputData) {
+    let originalData = [];
+    for (let i = 0; i &lt; outputData.length; i++) {
+        const element = outputData[i];
+        for (let j = 0; j &lt; element.size; j++) {
+            originalData.push({
+                name: element.name
+            });
+        }
+    }
+    return originalData;
+}
+
+
+console.log(handleOutputData(outputData));
+
+
+console.log('begin-test');
+console.log(simplifyResult(merge([{ name: 'w' }, { name: 'w' }, { name: '' }, { name: 'w' }, { name: 'w' }])) === 'w-2,-1,w-2');
+console.log(simplifyResult(merge([{ name: '' }, { name: 'w' }, { name: '' }, { name: 'w' }, { name: '' }])) === '-1,w-1,-1,w-1,-1');
+console.log(simplifyResult(merge([{ name: '' }, { name: '' }, { name: '' }, { name: 'w' }, { name: '' }])) === '-3,w-1,-1');
+console.log(simplifyResult(merge([{ name: '' }, { name: '' }, { name: '' }, { name: '' }, { name: '' }])) === '-5');
+console.log(simplifyResult(merge([{ name: 'w' }, { name: 'w' }, { name: 'w' }, { name: 'w' }, { name: 'w' }])) === 'w-5');
+console.log(simplifyResult(merge([{ name: '' }, { name: 'w' }, { name: 's' }, { name: 'w' }, { name: 'w' }])) === '-1,w-1,s-1,w-2');
+</code></pre>
 
                 </div>
             </article>
@@ -174,7 +256,7 @@ console.log(handleOutputData(outputData))
         
             <div class="next-post">
                 <div class="next gt-c-content-color-first">下一篇</div>
-                <a href="https://kaobeimao.github.io/post/J62G7HsFy" class="post-title gt-a-link">
+                <a href="https://kaobeimao.github.io/post/J62G7HsFy/" class="post-title gt-a-link">
                     docker使用nginx部署静态网站
                 </a>
             </div>

@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://kaobeimao.github.io</id>
     <title>kaobeimao</title>
-    <updated>2020-05-20T15:25:45.494Z</updated>
+    <updated>2020-05-21T10:11:42.703Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://kaobeimao.github.io"/>
     <link rel="self" href="https://kaobeimao.github.io/atom.xml"/>
@@ -12,11 +12,12 @@
     <rights>All rights reserved 2020, kaobeimao</rights>
     <entry>
         <title type="html"><![CDATA[JS合并数组中连续相同元素并累加次数]]></title>
-        <id>https://kaobeimao.github.io/post/3Ao49m_1b</id>
-        <link href="https://kaobeimao.github.io/post/3Ao49m_1b">
+        <id>https://kaobeimao.github.io/post/3Ao49m_1b/</id>
+        <link href="https://kaobeimao.github.io/post/3Ao49m_1b/">
         </link>
         <updated>2020-05-20T15:21:33.000Z</updated>
-        <content type="html"><![CDATA[<pre><code class="language-js">const originalData = [
+        <content type="html"><![CDATA[<pre><code class="language-js">// v1
+const originalData = [
     { name: 'qqq' },
     { name: 'www' },
     { name: 'www' },
@@ -78,12 +79,93 @@ function handleOutputData(outputData) {
 
 console.log(handleOutputData(outputData))
 </code></pre>
+<pre><code class="language-js">// v2
+const originalData = [{ name: 'w' }, { name: 'w' }, { name: '' }, { name: 'w' }, { name: 'w' }];
+
+console.log(originalData);
+
+console.log('==========================================================');
+
+function merge(origin) {
+    let result = [];
+
+    // 反向搜索可以合并的元素ß
+    let find = function (data, key) {
+        for (let i = data.length - 1; i &gt;= 0; i--) {
+            let item = data[i];
+            if (item.key === key) {
+                return i;
+            }
+        }
+    
+        return -1;
+    }
+
+    for (let i = 0; i &lt; origin.length; i++) {
+        const name = origin[i].name;
+        let findIndex = find(result, name);
+        // console.log(name, findIndex)
+        // 找到可以合并的
+        if (findIndex &gt;= 0) {
+            let mergeItem = result[findIndex];
+            // 坐标连续，可以合并
+            if (mergeItem.end === i) {
+                mergeItem.end = i + 1;
+                continue;
+            }
+        }
+        // 不可以合并的都作为独立元素添加
+        result.push({ key: name, begin: i, end: i + 1});
+        // console.log(result);
+    }
+
+    
+    return result.map((item, index) =&gt; { return {name: item.key, size: item.end - item.begin}; });
+}
+
+function simplifyResult(result) {
+    return result.map((item) =&gt; `${item.name}-${item.size}`).join(',')
+}
+
+// const outputData = handleOriginalData(originalData);
+const outputData = merge(originalData);
+console.log(outputData);
+
+console.log(simplifyResult(merge(originalData)));
+
+console.log('==========================================================');
+
+function handleOutputData(outputData) {
+    let originalData = [];
+    for (let i = 0; i &lt; outputData.length; i++) {
+        const element = outputData[i];
+        for (let j = 0; j &lt; element.size; j++) {
+            originalData.push({
+                name: element.name
+            });
+        }
+    }
+    return originalData;
+}
+
+
+console.log(handleOutputData(outputData));
+
+
+console.log('begin-test');
+console.log(simplifyResult(merge([{ name: 'w' }, { name: 'w' }, { name: '' }, { name: 'w' }, { name: 'w' }])) === 'w-2,-1,w-2');
+console.log(simplifyResult(merge([{ name: '' }, { name: 'w' }, { name: '' }, { name: 'w' }, { name: '' }])) === '-1,w-1,-1,w-1,-1');
+console.log(simplifyResult(merge([{ name: '' }, { name: '' }, { name: '' }, { name: 'w' }, { name: '' }])) === '-3,w-1,-1');
+console.log(simplifyResult(merge([{ name: '' }, { name: '' }, { name: '' }, { name: '' }, { name: '' }])) === '-5');
+console.log(simplifyResult(merge([{ name: 'w' }, { name: 'w' }, { name: 'w' }, { name: 'w' }, { name: 'w' }])) === 'w-5');
+console.log(simplifyResult(merge([{ name: '' }, { name: 'w' }, { name: 's' }, { name: 'w' }, { name: 'w' }])) === '-1,w-1,s-1,w-2');
+</code></pre>
 ]]></content>
     </entry>
     <entry>
         <title type="html"><![CDATA[docker使用nginx部署静态网站]]></title>
-        <id>https://kaobeimao.github.io/post/J62G7HsFy</id>
-        <link href="https://kaobeimao.github.io/post/J62G7HsFy">
+        <id>https://kaobeimao.github.io/post/J62G7HsFy/</id>
+        <link href="https://kaobeimao.github.io/post/J62G7HsFy/">
         </link>
         <updated>2020-05-11T06:59:22.000Z</updated>
         <content type="html"><![CDATA[<pre><code class="language-shell">docker pull nginx
@@ -110,8 +192,8 @@ gzip_comp_level 6;
     </entry>
     <entry>
         <title type="html"><![CDATA[ts接口]]></title>
-        <id>https://kaobeimao.github.io/post/QRqEP6nER</id>
-        <link href="https://kaobeimao.github.io/post/QRqEP6nER">
+        <id>https://kaobeimao.github.io/post/QRqEP6nER/</id>
+        <link href="https://kaobeimao.github.io/post/QRqEP6nER/">
         </link>
         <updated>2020-04-14T08:30:03.000Z</updated>
         <content type="html"><![CDATA[<h3 id="接口的定义">接口的定义</h3>
@@ -138,8 +220,8 @@ let tom: Person = {
     </entry>
     <entry>
         <title type="html"><![CDATA[docker安装mysql+phpmydamin]]></title>
-        <id>https://kaobeimao.github.io/post/ITHA19twK</id>
-        <link href="https://kaobeimao.github.io/post/ITHA19twK">
+        <id>https://kaobeimao.github.io/post/ITHA19twK/</id>
+        <link href="https://kaobeimao.github.io/post/ITHA19twK/">
         </link>
         <updated>2019-11-29T07:01:28.000Z</updated>
         <content type="html"><![CDATA[<pre><code class="language-shell"># docker 中下载 mysql
@@ -167,8 +249,8 @@ docker run --name myadmin-kbm -d --link mysql-kbm:db -p 8086:80 phpmyadmin/phpmy
     </entry>
     <entry>
         <title type="html"><![CDATA[throw]]></title>
-        <id>https://kaobeimao.github.io/post/eEFgrP9g4</id>
-        <link href="https://kaobeimao.github.io/post/eEFgrP9g4">
+        <id>https://kaobeimao.github.io/post/eEFgrP9g4/</id>
+        <link href="https://kaobeimao.github.io/post/eEFgrP9g4/">
         </link>
         <updated>2019-10-28T06:04:48.000Z</updated>
         <content type="html"><![CDATA[<blockquote>
@@ -197,8 +279,8 @@ try {
     </entry>
     <entry>
         <title type="html"><![CDATA[uni-app自定义TabBar]]></title>
-        <id>https://kaobeimao.github.io/post/1pcYfEj_2</id>
-        <link href="https://kaobeimao.github.io/post/1pcYfEj_2">
+        <id>https://kaobeimao.github.io/post/1pcYfEj_2/</id>
+        <link href="https://kaobeimao.github.io/post/1pcYfEj_2/">
         </link>
         <updated>2019-10-27T13:58:14.000Z</updated>
         <content type="html"><![CDATA[<h3 id="vuex管理状态">Vuex管理状态</h3>
@@ -435,8 +517,8 @@ export default {
     </entry>
     <entry>
         <title type="html"><![CDATA[Electron+ElementUI输入框键盘回车事件白屏]]></title>
-        <id>https://kaobeimao.github.io/post/tm-55fOUc</id>
-        <link href="https://kaobeimao.github.io/post/tm-55fOUc">
+        <id>https://kaobeimao.github.io/post/tm-55fOUc/</id>
+        <link href="https://kaobeimao.github.io/post/tm-55fOUc/">
         </link>
         <updated>2019-10-24T07:06:05.000Z</updated>
         <content type="html"><![CDATA[<blockquote>
@@ -456,8 +538,8 @@ export default {
     </entry>
     <entry>
         <title type="html"><![CDATA[JS基础知识点整理]]></title>
-        <id>https://kaobeimao.github.io/post/uJ61PmWre</id>
-        <link href="https://kaobeimao.github.io/post/uJ61PmWre">
+        <id>https://kaobeimao.github.io/post/uJ61PmWre/</id>
+        <link href="https://kaobeimao.github.io/post/uJ61PmWre/">
         </link>
         <updated>2019-10-10T07:00:47.000Z</updated>
         <content type="html"><![CDATA[<h2 id="内置类型">内置类型</h2>
@@ -522,7 +604,7 @@ str1 instanceof String // true
 <li><strong>转换为数字</strong></li>
 <li><strong>转换为字符串</strong></li>
 </ul>
-<figure data-type="image" tabindex="1"><img src="https://kaobeimao.github.io/post-images/1570696590205.png" alt=""></figure>
+<figure data-type="image" tabindex="1"><img src="https://kaobeimao.github.io/post-images/1570696590205.png" alt="" loading="lazy"></figure>
 <h3 id="转换为布尔值">转换为布尔值</h3>
 <p>在条件判断时，除了 undefined， null， false， NaN， &quot;&quot;， 0， -0，其他所有值都转为 true，包括所有对象。</p>
 <h3 id="对象转原始类型">对象转原始类型</h3>
@@ -569,7 +651,7 @@ let a = {
 a &gt; -1 // true
 </code></pre>
 <h2 id="this">this</h2>
-<figure data-type="image" tabindex="2"><img src="https://kaobeimao.github.io/post-images/1571381565249.png" alt=""></figure>
+<figure data-type="image" tabindex="2"><img src="https://kaobeimao.github.io/post-images/1571381565249.png" alt="" loading="lazy"></figure>
 <h2 id="">=== &amp; ==</h2>
 <p>=== 就是判断两者类型和值是否相同<br>
 == 流程：</p>
@@ -651,8 +733,8 @@ console.log(b.age) // 1
     </entry>
     <entry>
         <title type="html"><![CDATA[Boolean Skill]]></title>
-        <id>https://kaobeimao.github.io/post/P-LlCRZyP</id>
-        <link href="https://kaobeimao.github.io/post/P-LlCRZyP">
+        <id>https://kaobeimao.github.io/post/P-LlCRZyP/</id>
+        <link href="https://kaobeimao.github.io/post/P-LlCRZyP/">
         </link>
         <updated>2019-10-07T12:12:32.000Z</updated>
         <content type="html"><![CDATA[<h2 id="switchcase使用区间">switch/case使用区间</h2>
@@ -676,8 +758,8 @@ switch (true) {
     </entry>
     <entry>
         <title type="html"><![CDATA[扩展运算符]]></title>
-        <id>https://kaobeimao.github.io/post/eSPILDxPr</id>
-        <link href="https://kaobeimao.github.io/post/eSPILDxPr">
+        <id>https://kaobeimao.github.io/post/eSPILDxPr/</id>
+        <link href="https://kaobeimao.github.io/post/eSPILDxPr/">
         </link>
         <updated>2019-10-07T11:19:47.000Z</updated>
         <content type="html"><![CDATA[<blockquote>
