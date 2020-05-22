@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://kaobeimao.github.io</id>
     <title>kaobeimao</title>
-    <updated>2020-05-21T10:11:42.703Z</updated>
+    <updated>2020-05-22T08:31:00.966Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://kaobeimao.github.io"/>
     <link rel="self" href="https://kaobeimao.github.io/atom.xml"/>
@@ -80,20 +80,20 @@ function handleOutputData(outputData) {
 console.log(handleOutputData(outputData))
 </code></pre>
 <pre><code class="language-js">// v2
-const originalData = [{ name: 'w' }, { name: 'w' }, { name: '' }, { name: 'w' }, { name: 'w' }];
+const originalData = [{ name: '' }, { name: '' }, { name: '' }, { name: '' }, { name: '' }];
 
 console.log(originalData);
 
 console.log('==========================================================');
 
-function merge(origin) {
+function merge(origin, keyName = 'name') {
     let result = [];
 
     // 反向搜索可以合并的元素ß
     let find = function (data, key) {
         for (let i = data.length - 1; i &gt;= 0; i--) {
             let item = data[i];
-            if (item.key === key) {
+            if (key &amp;&amp; item.key === key) {
                 return i;
             }
         }
@@ -102,9 +102,8 @@ function merge(origin) {
     }
 
     for (let i = 0; i &lt; origin.length; i++) {
-        const name = origin[i].name;
+        const name = origin[i][keyName];
         let findIndex = find(result, name);
-        // console.log(name, findIndex)
         // 找到可以合并的
         if (findIndex &gt;= 0) {
             let mergeItem = result[findIndex];
@@ -116,18 +115,14 @@ function merge(origin) {
         }
         // 不可以合并的都作为独立元素添加
         result.push({ key: name, begin: i, end: i + 1});
-        // console.log(result);
     }
-
-    
-    return result.map((item, index) =&gt; { return {name: item.key, size: item.end - item.begin}; });
+    return result.map((item, index) =&gt; { return {[keyName]: item.key, size: item.end - item.begin}; });
 }
 
 function simplifyResult(result) {
     return result.map((item) =&gt; `${item.name}-${item.size}`).join(',')
 }
 
-// const outputData = handleOriginalData(originalData);
 const outputData = merge(originalData);
 console.log(outputData);
 
@@ -152,11 +147,11 @@ function handleOutputData(outputData) {
 console.log(handleOutputData(outputData));
 
 
-console.log('begin-test');
+console.log('=====begin-test=====');
 console.log(simplifyResult(merge([{ name: 'w' }, { name: 'w' }, { name: '' }, { name: 'w' }, { name: 'w' }])) === 'w-2,-1,w-2');
 console.log(simplifyResult(merge([{ name: '' }, { name: 'w' }, { name: '' }, { name: 'w' }, { name: '' }])) === '-1,w-1,-1,w-1,-1');
-console.log(simplifyResult(merge([{ name: '' }, { name: '' }, { name: '' }, { name: 'w' }, { name: '' }])) === '-3,w-1,-1');
-console.log(simplifyResult(merge([{ name: '' }, { name: '' }, { name: '' }, { name: '' }, { name: '' }])) === '-5');
+console.log(simplifyResult(merge([{ name: '' }, { name: '' }, { name: '' }, { name: 'w' }, { name: '' }])) === '-1,-1,-1,w-1,-1');
+console.log(simplifyResult(merge([{ name: '' }, { name: '' }, { name: '' }, { name: '' }, { name: '' }])) === '-1,-1,-1,-1,-1');
 console.log(simplifyResult(merge([{ name: 'w' }, { name: 'w' }, { name: 'w' }, { name: 'w' }, { name: 'w' }])) === 'w-5');
 console.log(simplifyResult(merge([{ name: '' }, { name: 'w' }, { name: 's' }, { name: 'w' }, { name: 'w' }])) === '-1,w-1,s-1,w-2');
 </code></pre>

@@ -4,7 +4,7 @@
 <meta name="description" content=""/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>JS合并数组中连续相同元素并累加次数 | kaobeimao</title>
-<link rel="shortcut icon" href="https://kaobeimao.github.io/favicon.ico?v=1590055263099">
+<link rel="shortcut icon" href="https://kaobeimao.github.io/favicon.ico?v=1590136227042">
 <link href="https://cdn.bootcss.com/font-awesome/5.11.2/css/all.css" rel="stylesheet">
 <link rel="stylesheet" href="https://kaobeimao.github.io/styles/main.css">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
@@ -168,20 +168,20 @@ function handleOutputData(outputData) {
 console.log(handleOutputData(outputData))
 </code></pre>
 <pre><code class="language-js">// v2
-const originalData = [{ name: 'w' }, { name: 'w' }, { name: '' }, { name: 'w' }, { name: 'w' }];
+const originalData = [{ name: '' }, { name: '' }, { name: '' }, { name: '' }, { name: '' }];
 
 console.log(originalData);
 
 console.log('==========================================================');
 
-function merge(origin) {
+function merge(origin, keyName = 'name') {
     let result = [];
 
     // 反向搜索可以合并的元素ß
     let find = function (data, key) {
         for (let i = data.length - 1; i &gt;= 0; i--) {
             let item = data[i];
-            if (item.key === key) {
+            if (key &amp;&amp; item.key === key) {
                 return i;
             }
         }
@@ -190,9 +190,8 @@ function merge(origin) {
     }
 
     for (let i = 0; i &lt; origin.length; i++) {
-        const name = origin[i].name;
+        const name = origin[i][keyName];
         let findIndex = find(result, name);
-        // console.log(name, findIndex)
         // 找到可以合并的
         if (findIndex &gt;= 0) {
             let mergeItem = result[findIndex];
@@ -204,18 +203,14 @@ function merge(origin) {
         }
         // 不可以合并的都作为独立元素添加
         result.push({ key: name, begin: i, end: i + 1});
-        // console.log(result);
     }
-
-    
-    return result.map((item, index) =&gt; { return {name: item.key, size: item.end - item.begin}; });
+    return result.map((item, index) =&gt; { return {[keyName]: item.key, size: item.end - item.begin}; });
 }
 
 function simplifyResult(result) {
     return result.map((item) =&gt; `${item.name}-${item.size}`).join(',')
 }
 
-// const outputData = handleOriginalData(originalData);
 const outputData = merge(originalData);
 console.log(outputData);
 
@@ -240,11 +235,11 @@ function handleOutputData(outputData) {
 console.log(handleOutputData(outputData));
 
 
-console.log('begin-test');
+console.log('=====begin-test=====');
 console.log(simplifyResult(merge([{ name: 'w' }, { name: 'w' }, { name: '' }, { name: 'w' }, { name: 'w' }])) === 'w-2,-1,w-2');
 console.log(simplifyResult(merge([{ name: '' }, { name: 'w' }, { name: '' }, { name: 'w' }, { name: '' }])) === '-1,w-1,-1,w-1,-1');
-console.log(simplifyResult(merge([{ name: '' }, { name: '' }, { name: '' }, { name: 'w' }, { name: '' }])) === '-3,w-1,-1');
-console.log(simplifyResult(merge([{ name: '' }, { name: '' }, { name: '' }, { name: '' }, { name: '' }])) === '-5');
+console.log(simplifyResult(merge([{ name: '' }, { name: '' }, { name: '' }, { name: 'w' }, { name: '' }])) === '-1,-1,-1,w-1,-1');
+console.log(simplifyResult(merge([{ name: '' }, { name: '' }, { name: '' }, { name: '' }, { name: '' }])) === '-1,-1,-1,-1,-1');
 console.log(simplifyResult(merge([{ name: 'w' }, { name: 'w' }, { name: 'w' }, { name: 'w' }, { name: 'w' }])) === 'w-5');
 console.log(simplifyResult(merge([{ name: '' }, { name: 'w' }, { name: 's' }, { name: 'w' }, { name: 'w' }])) === '-1,w-1,s-1,w-2');
 </code></pre>
